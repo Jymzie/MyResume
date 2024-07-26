@@ -23,7 +23,7 @@ class DownloadController extends Controller
      */
     public function create(Request $req)
     {
-        $path = storage_path() . '/app/public/' .$req->path;
+        $path = $req->path;
         return response()->download($path);
     }
 

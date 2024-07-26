@@ -118,7 +118,7 @@ export default {
         fab: false,
         email: false,
         message: {},
-        file: 'background.jpg',
+        file: 'RESUME - PUNZALAN, JIMWELL C.pdf',
         drawer: false,
         items: [{
                 text: 'SUMMARY',

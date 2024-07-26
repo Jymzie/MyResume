@@ -2186,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
       fab: false,
       email: false,
       message: {},
-      file: 'background.jpg',
+      file: 'RESUME - PUNZALAN, JIMWELL C.pdf',
       drawer: false,
       items: [{
         text: 'SUMMARY',
@@ -2454,8 +2454,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'hash',
-  base: '/Resume/',
+  mode: 'history',
   routes: [{
     path: '/Overview',
     name: 'Overview',
@@ -84016,8 +84015,10 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	(() => {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames not based on template
+/******/ 			if ({"resources_js_components_Overview_vue":1,"resources_js_components_Experience_vue":1,"resources_js_components_Contents_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/chunks/" + chunkId + ".js";
+/******/ 			return undefined;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -84115,7 +84116,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/Resume/";
+/******/ 		__webpack_require__.p = "/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

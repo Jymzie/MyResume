@@ -17,9 +17,9 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ]);
 
-    mix.webpackConfig({
-        output: {
-        publicPath: '/Resume/',
-            chunkFilename: 'js/chunks/[name].js',
-        },
-    });
+    // mix.webpackConfig({
+    //     output: {
+    //     publicPath: '/Resume/',
+    //         chunkFilename: 'js/chunks/[name].js',
+    //     },
+    // });
