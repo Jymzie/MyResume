@@ -1,10 +1,29 @@
 <template>
 <v-app id="inspire">
-    <v-navigation-drawer app class="elevation-10" mobile-breakpoint="0" v-model="drawer" src="images/nav1.jpg">
+    <v-navigation-drawer app v-model="drawer" touchless
+        mobile-breakpoint="0"
+        :mini-variant="mini"
+        :src="mini==false ? 'images/nav1.jpg' : ''"
+        :color="mini == true ? 'grey darken-4' : ''" width="220">
         <v-system-bar />
+       <v-list v-if="mini == true">
+          <v-list-item class="px-2">
+            <v-list-item-avatar>
+              <v-img src="images/profile.jpg"></v-img>
+            </v-list-item-avatar>
+          </v-list-item>
 
-        <v-img src="images/profile.jpg" width="180" class="rounded-circle elevation-10 mx-8 mt-2"></v-img>
-        <v-list>
+          <v-list-item link @click="mini=!mini">
+                <v-icon class="white--text">mdi-magnify-plus</v-icon>
+          </v-list-item>
+        </v-list>
+        
+        <v-list v-else><v-spacer/>
+            <v-col class="text-right mb-n4">
+                     <v-icon @click="mini=!mini">mdi-magnify-minus</v-icon>
+             </v-col>           
+
+            <v-img src="images/profile.jpg" width="150" class="rounded-circle elevation-10 mx-8 mt-2"></v-img>
             <v-tooltip right>
                 <template v-slot:activator="{on, attr}">
                     <v-list-item link v-on="on" v-bind="attr">
@@ -19,7 +38,7 @@
 
                     </v-list-item>
                 </template>
-
+                
                 <h5 v-for="(item,i) in detail" :key="i" :class="item.icon == '' ? 'blue--text font-italic text-center':'white--text'">
                     <v-icon v-if="item.icon != ''" class="blue--text mr-2">{{item.icon}}</v-icon>
                     {{item.text}}
@@ -28,13 +47,8 @@
             </v-tooltip>
         </v-list>
 
-        <v-divider>
-            <v-btn>
-                <v-icon>mdi-arrow-all</v-icon>
-            </v-btn>
-        </v-divider>
-        <v-list shaped dense class="white--text align-center">
-            <v-subheader class="white--text">CONTENTS:</v-subheader>
+        <v-divider/>
+        <v-list shaped dense class="grey--text align-center">
             <v-list-item v-for="(item, i) in items" :key="i" :to="item.to">
                 <v-list-item-icon>
                     <v-icon class="white--text">{{item.icon}}</v-icon>
@@ -118,8 +132,9 @@ export default {
         fab: false,
         email: false,
         message: {},
-        file: 'RESUME - PUNZALAN, JIMWELL C.pdf',
-        drawer: false,
+        file: 'Resume - Punzalan, Jimwell C.pdf',
+        drawer: true,
+        mini:true,
         items: [{
                 text: 'SUMMARY',
                 icon: 'mdi-book-open-page-variant',
@@ -316,8 +331,14 @@ export default {
         },
         mSend() {
             console.log(this.message)
-            this.email = false
-            this.$toast.success('E-mail Sent!', 'OK', this.notificationSystem.options.success)
+            axios.post('api/Download',this.message)
+            .then(res => {
+                this.email = false
+                this.$toast.success('E-mail Sent!', 'OK', this.notificationSystem.options.success)
+            }).catch(({response}) => {
+                this.$toast.error(response.data, 'Error', this.notificationSystem.options.error)
+            })
+            
         }
     },
     computed: {
@@ -339,8 +360,8 @@ export default {
     color: gray !important;
 }
 
-.bluetext {
-    color: blue;
+.whitetext {
+    color: white !important;
 }
 
 .v-speed-dial {

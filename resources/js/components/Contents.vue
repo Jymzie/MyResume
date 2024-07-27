@@ -1,6 +1,6 @@
 <template>
-<v-container>
-    <v-parallax src="images/parallax.jpg" class="my-n5 mx-n13" height="861">
+<v-card style="border-radius:0px">
+    <v-parallax src="images/parallax.jpg" height="900">
         <v-card class="seethrough" id="summary">
             <v-card-title class="black white--text font-weight-bold">
                 <v-icon x-large class="blue--text mx-2">mdi-book-open-page-variant</v-icon>
@@ -12,7 +12,7 @@
         </v-card>
     </v-parallax>
 
-    <v-parallax src="images/parallax2.jpg" class="my-n5 mx-n13" height="861">
+    <v-parallax src="images/parallax.jpeg" height="1000">
         <v-card class="seethrough">
             <v-card-title class="black white--text font-weight-bold">
                 <v-icon x-large class="blue--text mx-2">mdi-school</v-icon>
@@ -21,41 +21,44 @@
             <v-card-text id="education">
                 <v-row>
                     <v-col cols="5">
-                        <v-hover v-for="(item, i) in Education" :key="i">
-                            <template v-slot:default="{ hover }">
-                                <v-card class="mt-3">
-                                    <v-card-text class="text-center">
-                                        <v-row>
-                                            <v-col cols="2">
-                                                <v-img src="images/profile.jpg" width="75" class="rounded-circle elevation-10 mx-1"></v-img>
-                                            </v-col>
-                                            <v-col cols="10">
-                                                <h2>{{item.school}}</h2>
-                                                <v-card-subtitle class="mb-n8 mt-n3">S.Y. {{item.year}}</v-card-subtitle>
-                                                <v-card-subtitle>{{item.address}}</v-card-subtitle>
-                                            </v-col>
-                                        </v-row>
-                                    </v-card-text>
+                        <v-list>
+                            <v-card class="mt-3" v-for="(item, i) in Education" :key="i" @mouseover="mOpenOverlay(item)">
+                                <v-card-text class="text-center">
+                                    <v-list-item>
+                                        <v-list-item-avatar class="elevation-5" width="80" height="80">
+                                            <v-img :src="'images/'+item.logo"></v-img>
+                                        </v-list-item-avatar>
+                                        <v-list-item-content>
+                                            <v-list-item-title>{{item.school}}</v-list-item-title>
+                                            <v-list-item-subtitle>{{item.year}}</v-list-item-subtitle>
+                                            <v-list-item-subtitle>{{item.address}}</v-list-item-subtitle>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-card-text>
 
-                                    <v-expand-x-transition>
-                                        <v-overlay v-if="hover" absolute opacity="1" color="#14143C">
-                                            <span>{{item.year}}</span>
-                                            <br>
-                                            {{item.course}}
-                                            <br>
-                                            <span v-if="item.award != ''" class="yellow--text">
-                                                <v-icon class="yellow--text">mdi-medal</v-icon>
-                                                {{item.award}}
-                                            </span>
-                                        </v-overlay>
-                                    </v-expand-x-transition>
-
-                                </v-card>
-                            </template>
-                        </v-hover>
+                            </v-card>
+                        </v-list>
                     </v-col>
                     <v-col cols="7">
-                        <v-img src="images/parallax2.jpg" class="mt-3"></v-img>
+
+                        <v-img src="images/parallax2.jpg" class="mt-3" height="58vh">
+
+                            <v-overlay v-model="overlay" absolute color="#14143C">
+
+                                <span>{{overlaytext.year}}</span>
+                                <br>
+                                <span>{{overlaytext.school}}</span>
+                                <br>
+                                {{overlaytext.address}}
+                                <br><br>
+                                <span>{{overlaytext.course}}</span>
+                                <br>
+                                <span class="yellow--text">
+                                    <v-icon v-show="overlaytext.award != ''" class="yellow--text">mdi-medal</v-icon>
+                                    {{overlaytext.award}}
+                                </span>
+                            </v-overlay>
+                        </v-img>
 
                     </v-col>
                 </v-row>
@@ -64,7 +67,7 @@
         </v-card>
     </v-parallax>
 
-    <v-parallax src="images/parallax2.jpg" class="my-n5 mx-n13" height="861">
+    <v-parallax src="images/parallax2.jpg" height="1400">
         <v-card class="seethrough" id="portfolios">
             <v-card-title class="black white--text font-weight-bold">
                 <v-icon x-large class="blue--text mx-2">mdi-folder-pound</v-icon>
@@ -76,19 +79,17 @@
                         <v-hover>
                             <template v-slot:default="{ hover }">
                                 <v-card class="black pa-1 ma-2 elevation-0">
-                                    <v-carousel class="white" show-arrows-on-hover cycle interval="3000" hide-delimiters height="40vh">
-                                        <v-carousel-item v-for="(img,i) in item.img" :key="i" 
-                                            :src="'images/portfolio/'+img" 
-                                            transition="fade-transition"
-                                            reverse-transition="fade-transition">
+                                    <v-carousel class="white" show-arrows-on-hover cycle interval="3000" hide-delimiters height="300px">
+                                        <v-carousel-item v-for="(img,i) in item.img" :key="i" :src="'images/portfolio/'+img" transition="fade-transition" reverse-transition="fade-transition">
                                         </v-carousel-item>
 
                                     </v-carousel>
                                     <span class="white--text d-flex justify-center">{{item.title}}</span>
+
                                     <v-fade-transition>
                                         <v-overlay v-if="hover" absolute color="#14143C">
 
-                                            <v-btn class="blue" @click="mOpenCarousel(item.img)">
+                                            <v-btn class="blue" @click="mOpenCarousel(item.img,item.title)">
                                                 <v-icon class="mr-2">mdi-expand-all</v-icon>
                                                 Expand
                                             </v-btn>
@@ -106,56 +107,57 @@
         </v-card>
     </v-parallax>
 
-    <v-parallax src="images/parallax3.jpg" class="my-n5 mx-n13" height="861">
+    <v-parallax src="images/parallax3.jpg" height="900">
         <div>
             <v-row class="my-5">
-                <v-col cols="6">
+                <v-col cols="5">
                     <v-card class="seethrough" id="experience">
                         <v-card-title class="black white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-briefcase-search</v-icon>
                             EXPERIENCE
                         </v-card-title>
                         <v-card-text>
+                            <v-list>
+                                <v-hover v-for="(item, i) in Experience" :key="i">
+                                    <template v-slot:default="{ hover }">
+                                        <v-card class="mt-3">
+                                            <v-card-text class="text-center mx-5">
+                                                <v-list-item>
+                                                    <v-list-item-avatar class="elevation-5" width="80" height="80">
+                                                        <v-img :src="'images/'+item.logo"></v-img>
+                                                    </v-list-item-avatar>
+                                                    <v-list-item-content>
+                                                        <v-list-item-title>{{item.company}}</v-list-item-title>
+                                                        <v-list-item-subtitle>{{item.year}}</v-list-item-subtitle>
+                                                        <v-list-item-subtitle>{{item.address}}</v-list-item-subtitle>
+                                                    </v-list-item-content>
+                                                </v-list-item>
 
-                            <v-hover v-for="(item, i) in Experience" :key="i">
-                                <template v-slot:default="{ hover }">
-                                    <v-card class="mt-3">
-                                        <v-card-text class="text-center">
-                                            <v-row>
-                                                <v-col cols="2">
-                                                    <v-img src="images/profile.jpg" width="75" class="rounded-circle elevation-10 mx-1"></v-img>
-                                                </v-col>
-                                                <v-col cols="10">
-                                                    <h2>{{item.company}}</h2>
-                                                    <v-card-subtitle class="mb-n8 mt-n3">{{item.year}}</v-card-subtitle>
-                                                    <v-card-subtitle>{{item.address}}</v-card-subtitle>
-                                                </v-col>
-                                            </v-row>
-                                        </v-card-text>
+                                            </v-card-text>
 
-                                        <v-expand-x-transition>
-                                            <v-overlay v-if="hover" absolute opacity="1" color="#14143C">
-                                                <h4 class="blue--text">{{item.role}}</h4>
-                                                <v-list dense tile flat>
-                                                    <v-list-item v-for="(info,i) in item.info" :key="i" class="my-n4">
-                                                        {{info}}
-                                                    </v-list-item>
-                                                </v-list>
+                                            <v-expand-x-transition>
+                                                <v-overlay v-if="hover" absolute opacity="1" color="#14143C">
+                                                    <h4 class="blue--text">{{item.role}}</h4>
+                                                    <v-list dense tile flat color="#14143C">
+                                                        <v-list-item v-for="(info,i) in item.info" :key="i" class="my-n4">
+                                                            <v-list-item-title>{{info}}</v-list-item-title>
+                                                        </v-list-item>
+                                                    </v-list>
 
-                                                <br>
+                                                    <br>
 
-                                            </v-overlay>
-                                        </v-expand-x-transition>
+                                                </v-overlay>
+                                            </v-expand-x-transition>
 
-                                    </v-card>
-                                </template>
-                            </v-hover>
-
+                                        </v-card>
+                                    </template>
+                                </v-hover>
+                            </v-list>
                         </v-card-text>
                     </v-card>
                 </v-col>
 
-                <v-col cols="3">
+                <v-col cols="4">
                     <v-card class="seethrough mt-5" id="tskill">
                         <v-card-title class="black white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-cogs</v-icon>
@@ -177,9 +179,6 @@
                                         <v-list-item-content>
                                             <v-list-item-title>{{subitem}}</v-list-item-title>
                                         </v-list-item-content>
-                                        <v-list-item-icon>
-                                            <v-img src="images/profile.jpg" width="30"></v-img>
-                                        </v-list-item-icon>
                                     </v-list-item>
                                 </v-list-group>
                             </v-list>
@@ -220,65 +219,110 @@
     </v-parallax>
 
     <v-dialog v-model="carousel" width="80%">
-       <v-card class="black">
-            <v-carousel show-arrows-on-hover class="mt-n12">
-                <v-carousel-item v-for="(img,i) in carouselitem" :key="i" :src="'images/portfolio/'+img" contain cover></v-carousel-item>
+        <v-card class="grey darken-3">
+            <v-card-title class="white--text black">
+
+                {{carouselitem.title}}
+                <v-spacer />
+                <v-icon class="white--text" @click="carousel=!carousel">mdi-close</v-icon>
+
+            </v-card-title>
+            <v-carousel show-arrows-on-hover>
+                <v-carousel-item v-for="(img,i) in carouselitem.img" :key="i" :src="'images/portfolio/'+img" contain cover></v-carousel-item>
             </v-carousel>
         </v-card>
     </v-dialog>
 
+    <v-footer color="grey darken-4" dark>
+        <v-row class="mt-2 text-center grey--text">
+            <v-col cols="4" class="text-left ml-4 mr-n4">
+                <h2 class="white--text">ABOUT</h2>
 
-  <v-footer
-    dark
-    padless
-    relative
-  >
-    <v-card
-      class="flex"
-      flat
-      tile
-    >
-      <v-card-title class="black">
-        <strong class="subheading">Get connected to my social networks!</strong>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis.
 
-        <v-spacer></v-spacer>
+            </v-col>
+            <v-col cols="4" class="text-left">
+                <h2 id="reference" class="white--text">REFERENCES</h2>
+                <v-row>
+                    <v-col cols="4" v-for="(item,i) in reference" :key="i">
+                        <v-list dense color="grey darken-4">
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <v-list-item-title>{{item.name}}</v-list-item-title>
+                                    <v-list-item-subtitle>{{item.role}}</v-list-item-subtitle>
+                                    <v-list-item-subtitle>{{item.contact}}</v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+                        </v-list>
+                    </v-col>
+                </v-row>
+            </v-col>
+            <v-col cols="4" class="text-left">
+                <h2 class="white--text">INFORMATION</h2>
 
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4"
-          icon
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
-      </v-card-title>
+                <v-list dense flat color="grey darken-4">
+                    <v-list-item v-for="(item,i) in detail" :key="i">
+                        <v-list-item-icon>
+                            <v-icon class="blue--text">
+                                {{item.icon}}
+                            </v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                {{item.text}}
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+                <br>
+                <v-col class="text-right">
+                    <v-btn v-for="icon in icons" :key="icon.icon" class="mx-4" icon :href="icon.link" target="_blank">
+                        <v-icon class="blue--text" size="24px">
+                            {{ icon.icon }}
+                        </v-icon>
+                    </v-btn>
+                </v-col>
 
-      <v-card-text class="py-2 white black--text text-center">
-        {{ new Date().getFullYear() }} — <strong>Powered by: 
-            <img src="images/laravel.png" height="30" width="30"/>
-            <img src="images/vue.png" height="30" width="30"/>
-        </strong>
-        
-      </v-card-text>
-    </v-card>
-  </v-footer>
+            </v-col>
+        </v-row>
+        <v-row class="mb-1 indigo darken-4 align-center">
+            <v-col cols="4"></v-col>
+            <v-col class="text-right">
+                © {{ new Date().getFullYear() }} - <strong>Powered by: </strong>
+            </v-col>
+            <v-col class="text-left">
+                <img src="images/laravel.png" height="30" width="30" />
+                <img src="images/vue.png" height="30" width="30" />
+            </v-col>
+            <v-col cols="4"></v-col>
+        </v-row>
 
+    </v-footer>
 
-</v-container>
+</v-card>
 </template>
 
 <script>
 export default {
     data: () => ({
-        icons: [
-        'mdi-facebook',
-        'mdi-linkedin',
-        'mdi-gmail',
-      ],
+        overlay: true,
+        overlaytext: '',
+        icons: [{
+                icon: 'mdi-facebook',
+                link: 'https://www.google.com/'
+            },
+            {
+                icon: 'mdi-linkedin',
+                link: 'https://www.google.com/'
+            },
+            {
+                icon: 'mdi-gmail',
+                link: 'https://www.google.com/'
+            },
+        ],
         Education: [{
                 school: 'CAVITE STATE UNIVERSITY - CCAT',
+                logo: 'CVSU.png',
                 address: 'Tejeros Convention, Cavite',
                 year: '2018-2023',
                 course: 'Bachelor of Science in Information Technology (BSIT)',
@@ -286,6 +330,7 @@ export default {
             },
             {
                 school: 'SAINT AUGUSTINE - SENIOR HIGH',
+                logo: 'SAS.png',
                 address: 'Tanza, Cavite',
                 year: '2016-2018',
                 course: 'Senior High School - STEM Strand',
@@ -293,6 +338,7 @@ export default {
             },
             {
                 school: 'SAINT AUGUSTINE SCHOOL',
+                logo: 'SAS.png',
                 address: 'Tanza, Cavite',
                 year: '2012-2016',
                 course: 'Junior High School',
@@ -309,7 +355,7 @@ export default {
             {
                 title: 'Frameworks',
                 icon: 'mdi-electron-framework',
-                items: ['Laravel', 'Vue', 'React']
+                items: ['Laravel', 'Vue', 'React', 'Wordpress']
             },
             {
                 title: 'Databases',
@@ -345,6 +391,7 @@ export default {
         ],
         Experience: [{
                 company: 'H.R.D. SINGAPORE PTE LTD',
+                logo: 'HRD.png',
                 address: 'Block 3, Cavite Economic Zone III, Gen. Trias, Cavite',
                 year: 'Nov 6, 2023 - PRESENT',
                 role: 'Programmer / IT Support',
@@ -352,6 +399,7 @@ export default {
             },
             {
                 company: 'INTERN - CVSU-CCAT - ElStudio',
+                logo: 'CVSU.png',
                 address: "EM's Barrio, Tejeros Convention, Gen. Trias, Cavite",
                 year: 'March 2 - May 28, 2023',
                 role: 'Web Developer',
@@ -379,15 +427,44 @@ export default {
                 info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
             }
         ],
-        admins: [
-            ['Management', 'mdi-account-multiple-outline'],
-            ['Settings', 'mdi-arrow'],
+        detail: [{
+                icon: 'mdi-home',
+                text: '245 Purok 1, Tejero, Gen.Trias, Cavite, Philippines'
+            },
+            {
+                icon: 'mdi-phone',
+                text: '(+63) 961-122-9773'
+            }
+        ],
+        reference: [{
+                name: 'Ms. Jane Doe',
+                role: 'Teacher',
+                contact: '09611229773'
+            },
+            {
+                name: 'Ms. Jane Doe',
+                role: 'Teacher',
+                contact: '09611229773'
+            },
+            {
+                name: 'Ms. Jane Doe',
+                role: 'Teacher',
+                contact: '09611229773'
+            },
         ]
     }),
+    created() {
+        this.overlaytext = this.Education[0]
+    },
     methods: {
-        mOpenCarousel(item) {
-            this.carouselitem = item
+        mOpenCarousel(item, title) {
+            this.carouselitem.img = item
+            this.carouselitem.title = title
+            console.log(this.carouselitem);
             this.carousel = true
+        },
+        mOpenOverlay(item) {
+            this.overlaytext = item
         }
     }
 }

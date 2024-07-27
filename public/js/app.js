@@ -2179,6 +2179,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -2186,8 +2200,9 @@ __webpack_require__.r(__webpack_exports__);
       fab: false,
       email: false,
       message: {},
-      file: 'RESUME - PUNZALAN, JIMWELL C.pdf',
-      drawer: false,
+      file: 'Resume - Punzalan, Jimwell C.pdf',
+      drawer: true,
+      mini: true,
       items: [{
         text: 'SUMMARY',
         icon: 'mdi-book-open-page-variant',
@@ -2348,9 +2363,15 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     mSend: function mSend() {
+      var _this2 = this;
       console.log(this.message);
-      this.email = false;
-      this.$toast.success('E-mail Sent!', 'OK', this.notificationSystem.options.success);
+      axios.post('api/Download', this.message).then(function (res) {
+        _this2.email = false;
+        _this2.$toast.success('E-mail Sent!', 'OK', _this2.notificationSystem.options.success);
+      })["catch"](function (_ref) {
+        var response = _ref.response;
+        _this2.$toast.error(response.data, 'Error', _this2.notificationSystem.options.error);
+      });
     }
   },
   computed: {
@@ -2574,7 +2595,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.graytext[data-v-18733f2c] {\r\n    color: gray !important;\n}\n.bluetext[data-v-18733f2c] {\r\n    color: blue;\n}\n.v-speed-dial[data-v-18733f2c] {\r\n    position: fixed;\n}\n.fade-enter-active[data-v-18733f2c],\r\n.fade-leave-active[data-v-18733f2c] {\r\n    transition: opacity 0.5s;\n}\n.fade-enter-from[data-v-18733f2c],\r\n.fade-leave-to[data-v-18733f2c] {\r\n    opacity: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.graytext[data-v-18733f2c] {\r\n    color: gray !important;\n}\n.whitetext[data-v-18733f2c] {\r\n    color: white !important;\n}\n.v-speed-dial[data-v-18733f2c] {\r\n    position: fixed;\n}\n.fade-enter-active[data-v-18733f2c],\r\n.fade-leave-active[data-v-18733f2c] {\r\n    transition: opacity 0.5s;\n}\n.fade-enter-from[data-v-18733f2c],\r\n.fade-leave-to[data-v-18733f2c] {\r\n    opacity: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20535,8 +20556,15 @@ var render = function () {
       _c(
         "v-navigation-drawer",
         {
-          staticClass: "elevation-10",
-          attrs: { app: "", "mobile-breakpoint": "0", src: "images/nav1.jpg" },
+          attrs: {
+            app: "",
+            touchless: "",
+            "mobile-breakpoint": "0",
+            "mini-variant": _vm.mini,
+            src: _vm.mini == false ? "images/nav1.jpg" : "",
+            color: _vm.mini == true ? "grey darken-4" : "",
+            width: "220",
+          },
           model: {
             value: _vm.drawer,
             callback: function ($$v) {
@@ -20548,154 +20576,204 @@ var render = function () {
         [
           _c("v-system-bar"),
           _vm._v(" "),
-          _c("v-img", {
-            staticClass: "rounded-circle elevation-10 mx-8 mt-2",
-            attrs: { src: "images/profile.jpg", width: "180" },
-          }),
-          _vm._v(" "),
-          _c(
-            "v-list",
-            [
-              _c(
-                "v-tooltip",
-                {
-                  attrs: { right: "" },
-                  scopedSlots: _vm._u([
+          _vm.mini == true
+            ? _c(
+                "v-list",
+                [
+                  _c(
+                    "v-list-item",
+                    { staticClass: "px-2" },
+                    [
+                      _c(
+                        "v-list-item-avatar",
+                        [_c("v-img", { attrs: { src: "images/profile.jpg" } })],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item",
                     {
-                      key: "activator",
-                      fn: function (ref) {
-                        var on = ref.on
-                        var attr = ref.attr
-                        return [
-                          _c(
-                            "v-list-item",
-                            _vm._g(
-                              _vm._b(
-                                { attrs: { link: "" } },
-                                "v-list-item",
-                                attr,
-                                false
-                              ),
-                              on
-                            ),
-                            [
+                      attrs: { link: "" },
+                      on: {
+                        click: function ($event) {
+                          _vm.mini = !_vm.mini
+                        },
+                      },
+                    },
+                    [
+                      _c("v-icon", { staticClass: "white--text" }, [
+                        _vm._v("mdi-magnify-plus"),
+                      ]),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              )
+            : _c(
+                "v-list",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    { staticClass: "text-right mb-n4" },
+                    [
+                      _c(
+                        "v-icon",
+                        {
+                          on: {
+                            click: function ($event) {
+                              _vm.mini = !_vm.mini
+                            },
+                          },
+                        },
+                        [_vm._v("mdi-magnify-minus")]
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-img", {
+                    staticClass: "rounded-circle elevation-10 mx-8 mt-2",
+                    attrs: { src: "images/profile.jpg", width: "150" },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-tooltip",
+                    {
+                      attrs: { right: "" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "activator",
+                          fn: function (ref) {
+                            var on = ref.on
+                            var attr = ref.attr
+                            return [
                               _c(
-                                "v-list-item-content",
+                                "v-list-item",
+                                _vm._g(
+                                  _vm._b(
+                                    { attrs: { link: "" } },
+                                    "v-list-item",
+                                    attr,
+                                    false
+                                  ),
+                                  on
+                                ),
                                 [
                                   _c(
-                                    "v-list-item-title",
-                                    {
-                                      staticClass:
-                                        "graytext font-weight-bold text-center",
-                                    },
-                                    [_vm._v("Jimwell C. Punzalan")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-item-subtitle",
-                                    { staticClass: "graytext text-center" },
+                                    "v-list-item-content",
                                     [
-                                      _vm._v(
-                                        "See More...\r\n\r\n                                "
+                                      _c(
+                                        "v-list-item-title",
+                                        {
+                                          staticClass:
+                                            "graytext font-weight-bold text-center",
+                                        },
+                                        [_vm._v("Jimwell C. Punzalan")]
                                       ),
-                                      _c("v-icon", [_vm._v("mdi-menu-right")]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-list-item-subtitle",
+                                        { staticClass: "graytext text-center" },
+                                        [
+                                          _vm._v(
+                                            "See More...\r\n\r\n                                "
+                                          ),
+                                          _c("v-icon", [
+                                            _vm._v("mdi-menu-right"),
+                                          ]),
+                                        ],
+                                        1
+                                      ),
                                     ],
                                     1
                                   ),
                                 ],
                                 1
                               ),
-                            ],
-                            1
-                          ),
-                        ]
-                      },
+                            ]
+                          },
+                        },
+                      ]),
                     },
-                  ]),
-                },
-                [
-                  _vm._v(" "),
-                  _vm._l(_vm.detail, function (item, i) {
-                    return _c(
-                      "h5",
-                      {
-                        key: i,
-                        class:
-                          item.icon == ""
-                            ? "blue--text font-italic text-center"
-                            : "white--text",
-                      },
-                      [
-                        item.icon != ""
-                          ? _c("v-icon", { staticClass: "blue--text mr-2" }, [
-                              _vm._v(_vm._s(item.icon)),
-                            ])
-                          : _vm._e(),
-                        _vm._v(
-                          "\r\n                    " +
-                            _vm._s(item.text) +
-                            "\r\n                "
-                        ),
-                      ],
-                      1
-                    )
-                  }),
+                    [
+                      _vm._v(" "),
+                      _vm._l(_vm.detail, function (item, i) {
+                        return _c(
+                          "h5",
+                          {
+                            key: i,
+                            class:
+                              item.icon == ""
+                                ? "blue--text font-italic text-center"
+                                : "white--text",
+                          },
+                          [
+                            item.icon != ""
+                              ? _c(
+                                  "v-icon",
+                                  { staticClass: "blue--text mr-2" },
+                                  [_vm._v(_vm._s(item.icon))]
+                                )
+                              : _vm._e(),
+                            _vm._v(
+                              "\r\n                    " +
+                                _vm._s(item.text) +
+                                "\r\n                "
+                            ),
+                          ],
+                          1
+                        )
+                      }),
+                    ],
+                    2
+                  ),
                 ],
-                2
+                1
               ),
-            ],
-            1
-          ),
           _vm._v(" "),
-          _c(
-            "v-divider",
-            [_c("v-btn", [_c("v-icon", [_vm._v("mdi-arrow-all")])], 1)],
-            1
-          ),
+          _c("v-divider"),
           _vm._v(" "),
           _c(
             "v-list",
             {
-              staticClass: "white--text align-center",
+              staticClass: "grey--text align-center",
               attrs: { shaped: "", dense: "" },
             },
-            [
-              _c("v-subheader", { staticClass: "white--text" }, [
-                _vm._v("CONTENTS:"),
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.items, function (item, i) {
-                return _c(
-                  "v-list-item",
-                  { key: i, attrs: { to: item.to } },
-                  [
-                    _c(
-                      "v-list-item-icon",
-                      [
-                        _c("v-icon", { staticClass: "white--text" }, [
-                          _vm._v(_vm._s(item.icon)),
-                        ]),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-list-item-content",
-                      [
-                        _c(
-                          "v-list-item-title",
-                          { staticClass: "white--text" },
-                          [_vm._v(_vm._s(item.text))]
-                        ),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                )
-              }),
-            ],
-            2
+            _vm._l(_vm.items, function (item, i) {
+              return _c(
+                "v-list-item",
+                { key: i, attrs: { to: item.to } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [
+                      _c("v-icon", { staticClass: "white--text" }, [
+                        _vm._v(_vm._s(item.icon)),
+                      ]),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", { staticClass: "white--text" }, [
+                        _vm._v(_vm._s(item.text)),
+                      ]),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              )
+            }),
+            1
           ),
         ],
         1
