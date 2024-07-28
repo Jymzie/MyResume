@@ -2348,29 +2348,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     mDownload: function mDownload() {
-      var _this = this;
-      axios.get("api/Download/create?path=".concat(this.file), {
-        responseType: 'blob'
-      }).then(function (res) {
-        var url = window.URL.createObjectURL(new Blob([res.data]));
-        var link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", _this.file);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        _this.$toast.success('Download Successfully!', 'OK', _this.notificationSystem.options.success);
-      });
+      // axios.get(`api/Download/create?path=${this.file}`, {
+      //         responseType: 'blob'
+      //     })
+      //     .then(res => {
+      //         const url = window.URL.createObjectURL(new Blob([res.data]))
+      //         const link = document.createElement("a");
+      //         link.href = url
+      //         link.setAttribute("download", this.file)
+      //         document.body.appendChild(link)
+      //         link.click();
+      //         link.remove();
+      //         this.$toast.success('Download Successfully!', 'OK', this.notificationSystem.options.success)
+      //     })
+      window.open('https://drive.google.com/uc?export=download&id=1ECbvv66sDgqQ0B-gz3mIRok_4d0BFNJq', '_blank');
     },
     mSend: function mSend() {
-      var _this2 = this;
+      var _this = this;
       console.log(this.message);
       axios.post('api/Download', this.message).then(function (res) {
-        _this2.email = false;
-        _this2.$toast.success('E-mail Sent!', 'OK', _this2.notificationSystem.options.success);
+        _this.email = false;
+        _this.$toast.success('E-mail Sent!', 'OK', _this.notificationSystem.options.success);
       })["catch"](function (_ref) {
         var response = _ref.response;
-        _this2.$toast.error(response.data, 'Error', _this2.notificationSystem.options.error);
+        _this.$toast.error(response.data, 'Error', _this.notificationSystem.options.error);
       });
     }
   },

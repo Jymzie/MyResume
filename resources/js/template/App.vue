@@ -315,19 +315,20 @@ export default {
     },
     methods: {
         mDownload() {
-            axios.get(`api/Download/create?path=${this.file}`, {
-                    responseType: 'blob'
-                })
-                .then(res => {
-                    const url = window.URL.createObjectURL(new Blob([res.data]))
-                    const link = document.createElement("a");
-                    link.href = url
-                    link.setAttribute("download", this.file)
-                    document.body.appendChild(link)
-                    link.click();
-                    link.remove();
-                    this.$toast.success('Download Successfully!', 'OK', this.notificationSystem.options.success)
-                })
+            // axios.get(`api/Download/create?path=${this.file}`, {
+            //         responseType: 'blob'
+            //     })
+            //     .then(res => {
+            //         const url = window.URL.createObjectURL(new Blob([res.data]))
+            //         const link = document.createElement("a");
+            //         link.href = url
+            //         link.setAttribute("download", this.file)
+            //         document.body.appendChild(link)
+            //         link.click();
+            //         link.remove();
+            //         this.$toast.success('Download Successfully!', 'OK', this.notificationSystem.options.success)
+            //     })
+             window.open('https://drive.google.com/uc?export=download&id=1ECbvv66sDgqQ0B-gz3mIRok_4d0BFNJq', '_blank');
         },
         mSend() {
             console.log(this.message)

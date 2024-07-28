@@ -46,7 +46,7 @@
                     </v-col>
                     <v-col cols="7">
 
-                        <v-img src="images/parallax2.jpg" class="mt-3" height="58vh">
+                        <v-img src="images/parallax2.jpg" class="mt-3">
 
                             <v-overlay v-model="overlay" absolute color="#14143C">
 
@@ -254,13 +254,14 @@
             <v-col cols="4" class="text-left">
                 <h2 id="reference" class="white--text">REFERENCES</h2>
                 <v-row>
-                    <v-col cols="4" v-for="(item,i) in reference" :key="i">
+                    <v-col cols="6" v-for="(item,i) in reference" :key="i">
                         <v-list dense color="grey darken-4">
                             <v-list-item>
                                 <v-list-item-content>
                                     <v-list-item-title>{{item.name}}</v-list-item-title>
                                     <v-list-item-subtitle>{{item.role}}</v-list-item-subtitle>
                                     <v-list-item-subtitle>{{item.contact}}</v-list-item-subtitle>
+                                    <v-list-item-subtitle>{{item.gmail}}</v-list-item-subtitle>
                                 </v-list-item-content>
                             </v-list-item>
                         </v-list>
@@ -319,11 +320,11 @@ export default {
         overlaytext: '',
         icons: [{
                 icon: 'mdi-facebook',
-                link: 'https://www.google.com/'
+                link: 'https://www.facebook.com/jimwell.cruz.9'
             },
             {
                 icon: 'mdi-linkedin',
-                link: 'https://www.google.com/'
+                link: 'https://www.linkedin.com/in/jimwell-punzalan-80513830b/'
             },
             {
                 icon: 'mdi-gmail',
@@ -447,20 +448,17 @@ export default {
             }
         ],
         reference: [{
-                name: 'Ms. Jane Doe',
-                role: 'Teacher',
-                contact: '09611229773'
+                name: 'Aries M. Gelera',
+                role: 'Director, Research and Extension',
+                contact: '+63-935-163-2872',
+                gmail:'aries.gelera@cvsu.edu.ph'
             },
             {
-                name: 'Ms. Jane Doe',
-                role: 'Teacher',
-                contact: '09611229773'
-            },
-            {
-                name: 'Ms. Jane Doe',
-                role: 'Teacher',
-                contact: '09611229773'
-            },
+                name: 'Karlo Jose E. Nabablit',
+                role: 'Lecturer',
+                contact: '+63-917-573-6767',
+                gmail:'karlojose.nabablit@cvsu.edu.ph'
+            }
         ]
     }),
     created() {
