@@ -7,7 +7,12 @@
                 SUMMARY
             </v-card-title>
             <v-card-text>
-                <p class="ma-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.</p>
+                <p class="ma-4">An IT Specialist whom specialize in different kinds of
+                                computer-related expertise and with high level of
+                                understanding in programming and web development.
+                                Currently looking for opportunities to continue
+                                developing as a well-rounded IT expert in any varieties
+                                it covers.</p>
             </v-card-text>
         </v-card>
     </v-parallax>
@@ -238,7 +243,12 @@
             <v-col cols="4" class="text-left ml-4 mr-n4">
                 <h2 class="white--text">ABOUT</h2>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis.
+                An IT Specialist whom specialize in different kinds of
+                computer-related expertise and with high level of
+                understanding in programming and web development.
+                Currently looking for opportunities to continue
+                developing as a well-rounded IT expert in any varieties
+                it covers.
 
             </v-col>
             <v-col cols="4" class="text-left">
@@ -323,7 +333,7 @@ export default {
         Education: [{
                 school: 'CAVITE STATE UNIVERSITY - CCAT',
                 logo: 'CVSU.png',
-                address: 'Tejeros Convention, Cavite',
+                address: "EM's Barrio, Tejeros Convention, Rosario, Cavite",
                 year: '2018-2023',
                 course: 'Bachelor of Science in Information Technology (BSIT)',
                 award: 'CUM LAUDE'
@@ -331,7 +341,7 @@ export default {
             {
                 school: 'SAINT AUGUSTINE - SENIOR HIGH',
                 logo: 'SAS.png',
-                address: 'Tanza, Cavite',
+                address: 'Daang Amaya 3, Tanza, Cavite',
                 year: '2016-2018',
                 course: 'Senior High School - STEM Strand',
                 award: ''
@@ -339,7 +349,7 @@ export default {
             {
                 school: 'SAINT AUGUSTINE SCHOOL',
                 logo: 'SAS.png',
-                address: 'Tanza, Cavite',
+                address: 'St. Cruz St., Poblacion 1, Tanza, Cavite',
                 year: '2012-2016',
                 course: 'Junior High School',
                 award: 'BEST IN DEPORTMENT'
@@ -400,7 +410,7 @@ export default {
             {
                 company: 'INTERN - CVSU-CCAT - ElStudio',
                 logo: 'CVSU.png',
-                address: "EM's Barrio, Tejeros Convention, Gen. Trias, Cavite",
+                address: "EM's Barrio, Tejeros Convention, Rosario, Cavite",
                 year: 'March 2 - May 28, 2023',
                 role: 'Web Developer',
                 info: ['I use pure HTML, CSS, Javascript and PHP to create a website', 'Developed the ElStudio I.D. System']
@@ -417,12 +427,12 @@ export default {
                 info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
             },
             {
-                img: ['BHMDashboard.PNG', 'BHMLogin.PNG', 'BHMChecking.png'],
+                img: ['ElsHome.png', 'ElsScan.png', 'ElsQR.png'],
                 title: 'ElStudio I.D. System',
                 info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
             },
             {
-                img: ['BHMDashboard.PNG', 'BHMLogin.PNG', 'BHMChecking.png'],
+                img: ['PetAdopt.png', 'PetHome.png'],
                 title: 'WCMS: Pet Adopt Website',
                 info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
             }

@@ -315,6 +315,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -334,21 +344,21 @@ __webpack_require__.r(__webpack_exports__);
       Education: [{
         school: 'CAVITE STATE UNIVERSITY - CCAT',
         logo: 'CVSU.png',
-        address: 'Tejeros Convention, Cavite',
+        address: "EM's Barrio, Tejeros Convention, Rosario, Cavite",
         year: '2018-2023',
         course: 'Bachelor of Science in Information Technology (BSIT)',
         award: 'CUM LAUDE'
       }, {
         school: 'SAINT AUGUSTINE - SENIOR HIGH',
         logo: 'SAS.png',
-        address: 'Tanza, Cavite',
+        address: 'Daang Amaya 3, Tanza, Cavite',
         year: '2016-2018',
         course: 'Senior High School - STEM Strand',
         award: ''
       }, {
         school: 'SAINT AUGUSTINE SCHOOL',
         logo: 'SAS.png',
-        address: 'Tanza, Cavite',
+        address: 'St. Cruz St., Poblacion 1, Tanza, Cavite',
         year: '2012-2016',
         course: 'Junior High School',
         award: 'BEST IN DEPORTMENT'
@@ -398,7 +408,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         company: 'INTERN - CVSU-CCAT - ElStudio',
         logo: 'CVSU.png',
-        address: "EM's Barrio, Tejeros Convention, Gen. Trias, Cavite",
+        address: "EM's Barrio, Tejeros Convention, Rosario, Cavite",
         year: 'March 2 - May 28, 2023',
         role: 'Web Developer',
         info: ['I use pure HTML, CSS, Javascript and PHP to create a website', 'Developed the ElStudio I.D. System']
@@ -412,11 +422,11 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Access Manager',
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
       }, {
-        img: ['BHMDashboard.PNG', 'BHMLogin.PNG', 'BHMChecking.png'],
+        img: ['ElsHome.png', 'ElsScan.png', 'ElsQR.png'],
         title: 'ElStudio I.D. System',
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
       }, {
-        img: ['BHMDashboard.PNG', 'BHMLogin.PNG', 'BHMChecking.png'],
+        img: ['PetAdopt.png', 'PetHome.png'],
         title: 'WCMS: Pet Adopt Website',
         info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
       }],
@@ -576,7 +586,7 @@ var render = function () {
               _c("v-card-text", [
                 _c("p", { staticClass: "ma-4" }, [
                   _vm._v(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt."
+                    "An IT Specialist whom specialize in different kinds of\r\n                                computer-related expertise and with high level of\r\n                                understanding in programming and web development.\r\n                                Currently looking for opportunities to continue\r\n                                developing as a well-rounded IT expert in any varieties\r\n                                it covers."
                   ),
                 ]),
               ]),
@@ -1496,7 +1506,7 @@ var render = function () {
                 [
                   _c("h2", { staticClass: "white--text" }, [_vm._v("ABOUT")]),
                   _vm._v(
-                    "\r\n\r\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis.\r\n\r\n            "
+                    "\r\n\r\n                An IT Specialist whom specialize in different kinds of\r\n                computer-related expertise and with high level of\r\n                understanding in programming and web development.\r\n                Currently looking for opportunities to continue\r\n                developing as a well-rounded IT expert in any varieties\r\n                it covers.\r\n\r\n            "
                   ),
                 ]
               ),
