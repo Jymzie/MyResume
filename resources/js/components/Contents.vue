@@ -25,12 +25,12 @@
             </v-card-title>
             <v-card-text id="education">
                 <v-row>
-                    <v-col cols="5">
+                    <v-col :cols="overlaytext.year == item.year ? 6 : 3" class="mt-3" v-for="(item, i) in Education" :key="i" @mouseover="mOpenOverlay(item)">
                         <v-list>
-                            <v-card class="mt-3" v-for="(item, i) in Education" :key="i" @mouseover="mOpenOverlay(item)">
+                            <v-card>
                                 <v-card-text class="text-center">
                                     <v-list-item>
-                                        <v-list-item-avatar class="elevation-5" width="80" height="80">
+                                        <v-list-item-avatar class="elevation-5" :width="overlaytext.year == item.year ? 80 : 40" :height="overlaytext.year == item.year ? 80 : 40">
                                             <v-img :src="'images/'+item.logo"></v-img>
                                         </v-list-item-avatar>
                                         <v-list-item-content>
@@ -44,9 +44,10 @@
                             </v-card>
                         </v-list>
                     </v-col>
-                    <v-col cols="7">
+                </v-row>
+                    <v-col cols="12">
 
-                        <v-img src="images/parallax2.jpg" class="mt-3">
+                        <v-img src="images/parallax2.jpg" contain>
 
                             <v-overlay v-model="overlay" absolute color="#14143C">
 
@@ -66,13 +67,13 @@
                         </v-img>
 
                     </v-col>
-                </v-row>
+              
 
             </v-card-text>
         </v-card>
     </v-parallax>
 
-    <v-parallax src="images/parallax2.jpg" height="1400">
+    <v-parallax src="images/parallax2.jpg" height="1500">
         <v-card class="seethrough" id="portfolios">
             <v-card-title class="black white--text font-weight-bold">
                 <v-icon x-large class="blue--text mx-2">mdi-folder-pound</v-icon>
@@ -80,11 +81,11 @@
             </v-card-title>
             <v-card-text class="justify-center align-center mx-auto">
                 <v-row>
-                    <v-col cols="6" v-for="(item, i) in Portfolios" :key="i">
+                    <v-col cols="6" sm="12" md="6" lg="4" xl="3" v-for="(item, i) in Portfolios" :key="i">
                         <v-hover>
                             <template v-slot:default="{ hover }">
                                 <v-card class="black pa-1 ma-2 elevation-0">
-                                    <v-carousel class="white" show-arrows-on-hover cycle interval="3000" hide-delimiters height="300px">
+                                    <v-carousel class="white" show-arrows-on-hover cycle interval="3000" hide-delimiters height="240">
                                         <v-carousel-item v-for="(img,i) in item.img" :key="i" :src="'images/portfolio/'+img" transition="fade-transition" reverse-transition="fade-transition">
                                         </v-carousel-item>
 
@@ -115,7 +116,7 @@
     <v-parallax src="images/parallax3.jpg" height="900">
         <div>
             <v-row class="my-5">
-                <v-col cols="5">
+                <v-col cols="5" lg="5" sm="12">
                     <v-card class="seethrough" id="experience">
                         <v-card-title class="black white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-briefcase-search</v-icon>
@@ -162,7 +163,7 @@
                     </v-card>
                 </v-col>
 
-                <v-col cols="4">
+                <v-col cols="4" lg="4" sm="6">
                     <v-card class="seethrough mt-5" id="tskill">
                         <v-card-title class="black white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-cogs</v-icon>
@@ -192,7 +193,7 @@
                     </v-card>
                 </v-col>
 
-                <v-col cols="3">
+                <v-col cols="3" lg="3" sm="6">
                     <v-card class="seethrough mt-5" id="skill">
                         <v-card-title class="black white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-puzzle</v-icon>
@@ -254,7 +255,7 @@
             <v-col cols="4" class="text-left">
                 <h2 id="reference" class="white--text">REFERENCES</h2>
                 <v-row>
-                    <v-col cols="6" v-for="(item,i) in reference" :key="i">
+                    <v-col cols="6" sm="12" md="6" lg="4" xl="3" v-for="(item,i) in reference" :key="i">
                         <v-list dense color="grey darken-4">
                             <v-list-item>
                                 <v-list-item-content>

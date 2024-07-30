@@ -326,6 +326,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -627,25 +628,27 @@ var render = function () {
                 [
                   _c(
                     "v-row",
-                    [
-                      _c(
+                    _vm._l(_vm.Education, function (item, i) {
+                      return _c(
                         "v-col",
-                        { attrs: { cols: "5" } },
+                        {
+                          key: i,
+                          staticClass: "mt-3",
+                          attrs: {
+                            cols: _vm.overlaytext.year == item.year ? 6 : 3,
+                          },
+                          on: {
+                            mouseover: function ($event) {
+                              return _vm.mOpenOverlay(item)
+                            },
+                          },
+                        },
                         [
                           _c(
                             "v-list",
-                            _vm._l(_vm.Education, function (item, i) {
-                              return _c(
+                            [
+                              _c(
                                 "v-card",
-                                {
-                                  key: i,
-                                  staticClass: "mt-3",
-                                  on: {
-                                    mouseover: function ($event) {
-                                      return _vm.mOpenOverlay(item)
-                                    },
-                                  },
-                                },
                                 [
                                   _c(
                                     "v-card-text",
@@ -659,8 +662,16 @@ var render = function () {
                                             {
                                               staticClass: "elevation-5",
                                               attrs: {
-                                                width: "80",
-                                                height: "80",
+                                                width:
+                                                  _vm.overlaytext.year ==
+                                                  item.year
+                                                    ? 80
+                                                    : 40,
+                                                height:
+                                                  _vm.overlaytext.year ==
+                                                  item.year
+                                                    ? 80
+                                                    : 40,
                                               },
                                             },
                                             [
@@ -698,96 +709,91 @@ var render = function () {
                                   ),
                                 ],
                                 1
-                              )
-                            }),
+                              ),
+                            ],
                             1
                           ),
                         ],
                         1
-                      ),
-                      _vm._v(" "),
+                      )
+                    }),
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12" } },
+                    [
                       _c(
-                        "v-col",
-                        { attrs: { cols: "7" } },
+                        "v-img",
+                        { attrs: { src: "images/parallax2.jpg", contain: "" } },
                         [
                           _c(
-                            "v-img",
+                            "v-overlay",
                             {
-                              staticClass: "mt-3",
-                              attrs: { src: "images/parallax2.jpg" },
+                              attrs: { absolute: "", color: "#14143C" },
+                              model: {
+                                value: _vm.overlay,
+                                callback: function ($$v) {
+                                  _vm.overlay = $$v
+                                },
+                                expression: "overlay",
+                              },
                             },
                             [
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.overlaytext.year)),
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.overlaytext.school)),
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(
+                                "\r\n                                " +
+                                  _vm._s(_vm.overlaytext.address) +
+                                  "\r\n                                "
+                              ),
+                              _c("br"),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.overlaytext.course)),
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
                               _c(
-                                "v-overlay",
-                                {
-                                  attrs: { absolute: "", color: "#14143C" },
-                                  model: {
-                                    value: _vm.overlay,
-                                    callback: function ($$v) {
-                                      _vm.overlay = $$v
-                                    },
-                                    expression: "overlay",
-                                  },
-                                },
+                                "span",
+                                { staticClass: "yellow--text" },
                                 [
-                                  _c("span", [
-                                    _vm._v(_vm._s(_vm.overlaytext.year)),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c("span", [
-                                    _vm._v(_vm._s(_vm.overlaytext.school)),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("br"),
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: _vm.overlaytext.award != "",
+                                          expression: "overlaytext.award != ''",
+                                        },
+                                      ],
+                                      staticClass: "yellow--text",
+                                    },
+                                    [_vm._v("mdi-medal")]
+                                  ),
                                   _vm._v(
-                                    "\r\n                                " +
-                                      _vm._s(_vm.overlaytext.address) +
+                                    "\r\n                                    " +
+                                      _vm._s(_vm.overlaytext.award) +
                                       "\r\n                                "
                                   ),
-                                  _c("br"),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c("span", [
-                                    _vm._v(_vm._s(_vm.overlaytext.course)),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c(
-                                    "span",
-                                    { staticClass: "yellow--text" },
-                                    [
-                                      _c(
-                                        "v-icon",
-                                        {
-                                          directives: [
-                                            {
-                                              name: "show",
-                                              rawName: "v-show",
-                                              value:
-                                                _vm.overlaytext.award != "",
-                                              expression:
-                                                "overlaytext.award != ''",
-                                            },
-                                          ],
-                                          staticClass: "yellow--text",
-                                        },
-                                        [_vm._v("mdi-medal")]
-                                      ),
-                                      _vm._v(
-                                        "\r\n                                    " +
-                                          _vm._s(_vm.overlaytext.award) +
-                                          "\r\n                                "
-                                      ),
-                                    ],
-                                    1
-                                  ),
-                                ]
+                                ],
+                                1
                               ),
-                            ],
-                            1
+                            ]
                           ),
                         ],
                         1
@@ -807,7 +813,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "v-parallax",
-        { attrs: { src: "images/parallax2.jpg", height: "1400" } },
+        { attrs: { src: "images/parallax2.jpg", height: "1500" } },
         [
           _c(
             "v-card",
@@ -839,7 +845,16 @@ var render = function () {
                     _vm._l(_vm.Portfolios, function (item, i) {
                       return _c(
                         "v-col",
-                        { key: i, attrs: { cols: "6" } },
+                        {
+                          key: i,
+                          attrs: {
+                            cols: "6",
+                            sm: "12",
+                            md: "6",
+                            lg: "4",
+                            xl: "3",
+                          },
+                        },
                         [
                           _c("v-hover", {
                             scopedSlots: _vm._u(
@@ -865,7 +880,7 @@ var render = function () {
                                                 cycle: "",
                                                 interval: "3000",
                                                 "hide-delimiters": "",
-                                                height: "300px",
+                                                height: "240",
                                               },
                                             },
                                             _vm._l(item.img, function (img, i) {
@@ -986,7 +1001,7 @@ var render = function () {
                 [
                   _c(
                     "v-col",
-                    { attrs: { cols: "5" } },
+                    { attrs: { cols: "5", lg: "5", sm: "12" } },
                     [
                       _c(
                         "v-card",
@@ -1219,7 +1234,7 @@ var render = function () {
                   _vm._v(" "),
                   _c(
                     "v-col",
-                    { attrs: { cols: "4" } },
+                    { attrs: { cols: "4", lg: "4", sm: "6" } },
                     [
                       _c(
                         "v-card",
@@ -1331,7 +1346,7 @@ var render = function () {
                   _vm._v(" "),
                   _c(
                     "v-col",
-                    { attrs: { cols: "3" } },
+                    { attrs: { cols: "3", lg: "3", sm: "6" } },
                     [
                       _c(
                         "v-card",
@@ -1522,7 +1537,16 @@ var render = function () {
                     _vm._l(_vm.reference, function (item, i) {
                       return _c(
                         "v-col",
-                        { key: i, attrs: { cols: "6" } },
+                        {
+                          key: i,
+                          attrs: {
+                            cols: "6",
+                            sm: "12",
+                            md: "6",
+                            lg: "4",
+                            xl: "3",
+                          },
+                        },
                         [
                           _c(
                             "v-list",
