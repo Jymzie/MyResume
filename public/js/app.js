@@ -2197,6 +2197,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      screensize: '',
       fab: false,
       email: false,
       message: {},
@@ -2218,13 +2219,6 @@ __webpack_require__.r(__webpack_exports__);
           hash: '#education'
         }
       }, {
-        text: 'PORTFOLIOS',
-        icon: 'mdi-folder',
-        to: {
-          name: 'Contents',
-          hash: '#portfolios'
-        }
-      }, {
         text: 'EXPERIENCE',
         icon: 'mdi-briefcase-variant',
         to: {
@@ -2232,11 +2226,11 @@ __webpack_require__.r(__webpack_exports__);
           hash: '#experience'
         }
       }, {
-        text: 'SKILLS',
-        icon: 'mdi-puzzle',
+        text: 'PORTFOLIOS',
+        icon: 'mdi-folder',
         to: {
           name: 'Contents',
-          hash: '#skill'
+          hash: '#portfolios'
         }
       }, {
         text: 'TECHNICAL SKILLS',
@@ -2345,6 +2339,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.drawer = true;
+    this.screensize = screen.width;
   },
   methods: {
     mDownload: function mDownload() {
@@ -20597,6 +20592,14 @@ var render = function () {
                   _c(
                     "v-list-item",
                     {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.screensize > 540,
+                          expression: "screensize > 540",
+                        },
+                      ],
                       attrs: { link: "" },
                       on: {
                         click: function ($event) {

@@ -13,7 +13,7 @@
             </v-list-item-avatar>
           </v-list-item>
 
-          <v-list-item link @click="mini=!mini">
+          <v-list-item link @click="mini=!mini" v-show="screensize > 540">
                 <v-icon class="white--text">mdi-magnify-plus</v-icon>
           </v-list-item>
         </v-list>
@@ -129,6 +129,7 @@
 <script>
 export default {
     data: () => ({
+        screensize:'',
         fab: false,
         email: false,
         message: {},
@@ -152,14 +153,6 @@ export default {
                 }
             },
             {
-                text: 'PORTFOLIOS',
-                icon: 'mdi-folder',
-                to: {
-                    name: 'Contents',
-                    hash: '#portfolios'
-                }
-            },
-            {
                 text: 'EXPERIENCE',
                 icon: 'mdi-briefcase-variant',
                 to: {
@@ -168,11 +161,11 @@ export default {
                 }
             },
             {
-                text: 'SKILLS',
-                icon: 'mdi-puzzle',
+                text: 'PORTFOLIOS',
+                icon: 'mdi-folder',
                 to: {
                     name: 'Contents',
-                    hash: '#skill'
+                    hash: '#portfolios'
                 }
             },
             {
@@ -312,6 +305,7 @@ export default {
     }),
     created() {
         this.drawer = true
+        this.screensize = screen.width
     },
     methods: {
         mDownload() {

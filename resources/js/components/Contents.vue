@@ -7,12 +7,9 @@
                 SUMMARY
             </v-card-title>
             <v-card-text>
-                <p class="ma-4">An IT Specialist whom specialize in different kinds of
-                                computer-related expertise and with high level of
-                                understanding in programming and web development.
-                                Currently looking for opportunities to continue
-                                developing as a well-rounded IT expert in any varieties
-                                it covers.</p>
+                <br>    
+                <h1>IT Specialist</h1>
+                <p class="ma-4">{{summary}}</p>
             </v-card-text>
         </v-card>
     </v-parallax>
@@ -24,56 +21,165 @@
                 EDUCATION
             </v-card-title>
             <v-card-text id="education">
+
                 <v-row>
-                    <v-col :cols="overlaytext.year == item.year ? 6 : 3" class="mt-3" v-for="(item, i) in Education" :key="i" @mouseover="mOpenOverlay(item)">
-                        <v-list>
-                            <v-card>
-                                <v-card-text class="text-center">
-                                    <v-list-item>
-                                        <v-list-item-avatar class="elevation-5" :width="overlaytext.year == item.year ? 80 : 40" :height="overlaytext.year == item.year ? 80 : 40">
-                                            <v-img :src="'images/'+item.logo"></v-img>
-                                        </v-list-item-avatar>
-                                        <v-list-item-content>
-                                            <v-list-item-title>{{item.school}}</v-list-item-title>
-                                            <v-list-item-subtitle>{{item.year}}</v-list-item-subtitle>
-                                            <v-list-item-subtitle>{{item.address}}</v-list-item-subtitle>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                </v-card-text>
+                    <v-col cols="12" lg="6" sm="12">
 
-                            </v-card>
-                        </v-list>
+                        <v-carousel height="180" class="mb-n10" hide-delimiters v-if="this.$vuetify.breakpoint.name == 'lg' || this.$vuetify.breakpoint.name =='xl' ? false : true">
+                            <template v-slot:prev="{ on, attrs }">
+                                <v-icon v-bind="attrs" x-large @click="mShowOverlay(-1)" v-on="on">mdi-chevron-left</v-icon>
+
+                            </template>
+                            <template v-slot:next="{ on, attrs }">
+                                <v-icon v-bind="attrs" x-large @click="mShowOverlay(1)" v-on="on">mdi-chevron-right</v-icon>
+                            </template>
+                            <v-carousel-item v-for="(item, i) in Education" :key="i" @mouseover="mOpenOverlay(item,i)">
+
+                                <v-list>
+                                    <v-card class="mt-3">
+                                        <v-card-text class="text-center">
+                                            <v-list-item>
+                                                <v-list-item-avatar class="elevation-5" :width="80" :height="80">
+                                                    <v-img :src="'images/'+item.logo"></v-img>
+                                                </v-list-item-avatar>
+                                                <v-list-item-content>
+                                                    <v-list-item-title>{{item.school}}</v-list-item-title>
+                                                    <v-list-item-subtitle>{{item.year}}</v-list-item-subtitle>
+                                                    <v-list-item-subtitle>{{item.address}}</v-list-item-subtitle>
+                                                </v-list-item-content>
+                                            </v-list-item>
+                                        </v-card-text>
+
+                                    </v-card>
+                                </v-list>
+
+                            </v-carousel-item>
+                        </v-carousel>
+
+                        <v-col v-else :cols="overlaytext.year == item.year ? 12 : 11" v-for="(item, i) in Education" :key="i" @mouseover="mOpenOverlay(item)">
+                            <v-list>
+                                <v-card>
+                                    <v-card-text class="text-center">
+
+                                        <v-list-item>
+                                            <v-list-item-avatar class="elevation-5" :width="overlaytext.year == item.year ? 80 : 40" :height="overlaytext.year == item.year ? 80 : 40">
+                                                <v-img :src="'images/'+item.logo"></v-img>
+                                            </v-list-item-avatar>
+                                            <v-list-item-content>
+                                                <v-list-item-title>{{item.school}}</v-list-item-title>
+                                                <v-list-item-subtitle>{{item.year}}</v-list-item-subtitle>
+                                                <v-list-item-subtitle>{{item.address}}</v-list-item-subtitle>
+                                            </v-list-item-content>
+                                        </v-list-item>
+
+                                    </v-card-text>
+
+                                </v-card>
+                            </v-list>
+                        </v-col>
                     </v-col>
-                </v-row>
-                    <v-col cols="12">
-
-                        <v-img src="images/parallax2.jpg" contain>
+                    <v-col cols="12" lg="6" sm="12">
+                        
+                         <v-carousel class="white" hide-arrows cycle interval="3000" hide-delimiters height="400" :class="this.$vuetify.breakpoint.name == 'lg' || this.$vuetify.breakpoint.name =='xl' ? 'mt-10' : ''">
+                            <v-carousel-item v-for="(img,i) in gradpic" :key="i" :src="'images/'+img" transition="fade-transition" reverse-transition="fade-transition" contain COVER>
+                            </v-carousel-item>
 
                             <v-overlay v-model="overlay" absolute color="#14143C">
-
-                                <span>{{overlaytext.year}}</span>
-                                <br>
-                                <span>{{overlaytext.school}}</span>
-                                <br>
-                                {{overlaytext.address}}
-                                <br><br>
-                                <span>{{overlaytext.course}}</span>
-                                <br>
-                                <span class="yellow--text">
-                                    <v-icon v-show="overlaytext.award != ''" class="yellow--text">mdi-medal</v-icon>
-                                    {{overlaytext.award}}
-                                </span>
+                                <transition name="fade" mode="out-in">
+                                    <div :key="overlaytext.year">
+                                        <span>{{overlaytext.year}}</span>
+                                        <br>
+                                        <span>{{overlaytext.school}}</span>
+                                        <br>
+                                        {{overlaytext.address}}
+                                        <br><br>
+                                        <span>{{overlaytext.course}}</span>
+                                        <br>
+                                        <span class="yellow--text">
+                                            <v-icon v-show="overlaytext.award != ''" class="yellow--text">mdi-medal</v-icon>
+                                            {{overlaytext.award}}
+                                        </span>
+                                    </div>
+                                </transition>
                             </v-overlay>
+                        </v-carousel>
                         </v-img>
 
                     </v-col>
-              
+                </v-row>
 
             </v-card-text>
         </v-card>
     </v-parallax>
 
-    <v-parallax src="images/parallax2.jpg" height="1500">
+    <v-parallax src="images/parallax4.png" height="1000">
+
+        <v-card class="seethrough" id="experience">
+            <v-card-title class="black white--text font-weight-bold">
+                <v-icon x-large class="blue--text mx-2">mdi-briefcase-search</v-icon>
+                EXPERIENCE
+            </v-card-title>
+            <v-card-text>
+                <v-row>
+                    <v-col cols="12" class="mb-n10">
+                        <v-carousel height="180" hide-delimiters>
+                            <template v-slot:prev="{ on, attrs }">
+                                <v-icon v-bind="attrs" x-large @click="mShowOverlay(-2)" v-on="on">mdi-chevron-left</v-icon>
+
+                            </template>
+                            <template v-slot:next="{ on, attrs }">
+                                <v-icon v-bind="attrs" x-large @click="mShowOverlay(2)" v-on="on">mdi-chevron-right</v-icon>
+                            </template>
+                            <v-carousel-item v-for="(item, i) in Experience" :key="i" @mouseover="mOpenOverlay(item,i,'exp')">
+
+                                <v-list>
+                                    <v-card class="mt-3">
+                                        <v-card-text class="text-center">
+                                            <v-list-item>
+                                                <v-list-item-avatar class="elevation-5" :width="80" :height="80">
+                                                    <v-img :src="'images/'+item.logo"></v-img>
+                                                </v-list-item-avatar>
+                                                <v-list-item-content>
+                                                    <v-list-item-title>{{item.company}}</v-list-item-title>
+                                                    <v-list-item-subtitle>{{item.year}}</v-list-item-subtitle>
+                                                    <v-list-item-subtitle>{{item.address}}</v-list-item-subtitle>
+                                                </v-list-item-content>
+                                            </v-list-item>
+                                        </v-card-text>
+
+                                    </v-card>
+                                </v-list>
+
+                            </v-carousel-item>
+                        </v-carousel>
+                    </v-col>
+                    <v-col cols="12">
+
+                        <v-img src="images/parallax2.jpg" height="400" :class="this.$vuetify.breakpoint.name == 'lg' || this.$vuetify.breakpoint.name =='xl' ? 'mt-10' : ''">
+
+                            <v-overlay v-model="overlay" absolute color="#14143C">
+                                <transition name="fade" mode="out-in">
+                                    <div :key="overlaytext2.role">
+
+                                        <span class="text-h5">Role: {{overlaytext2.role}}</span>
+                                        <br><br>
+                                        <ul>
+                                            <li v-for="(info,i) in overlaytext2.info" :key="i">{{info}}</li>
+                                        </ul>
+
+                                    </div>
+                                </transition>
+                            </v-overlay>
+                        </v-img>
+
+                    </v-col>
+                </v-row>
+            </v-card-text>
+        </v-card>
+
+    </v-parallax>
+
+    <v-parallax src="images/parallax2.jpg" height="1400">
         <v-card class="seethrough" id="portfolios">
             <v-card-title class="black white--text font-weight-bold">
                 <v-icon x-large class="blue--text mx-2">mdi-folder-pound</v-icon>
@@ -81,11 +187,11 @@
             </v-card-title>
             <v-card-text class="justify-center align-center mx-auto">
                 <v-row>
-                    <v-col cols="6" sm="12" md="6" lg="4" xl="3" v-for="(item, i) in Portfolios" :key="i">
+                    <v-col cols="12" sm="12" md="6" lg="4" xl="3" v-for="(item, i) in Portfolios" :key="i">
                         <v-hover>
                             <template v-slot:default="{ hover }">
                                 <v-card class="black pa-1 ma-2 elevation-0">
-                                    <v-carousel class="white" show-arrows-on-hover cycle interval="3000" hide-delimiters height="240">
+                                    <v-carousel class="white" show-arrows-on-hover cycle interval="3000" hide-delimiters height="240px">
                                         <v-carousel-item v-for="(img,i) in item.img" :key="i" :src="'images/portfolio/'+img" transition="fade-transition" reverse-transition="fade-transition">
                                         </v-carousel-item>
 
@@ -116,54 +222,8 @@
     <v-parallax src="images/parallax3.jpg" height="900">
         <div>
             <v-row class="my-5">
-                <v-col cols="5" lg="5" sm="12">
-                    <v-card class="seethrough" id="experience">
-                        <v-card-title class="black white--text font-weight-bold">
-                            <v-icon x-large class="blue--text mx-2">mdi-briefcase-search</v-icon>
-                            EXPERIENCE
-                        </v-card-title>
-                        <v-card-text>
-                            <v-list>
-                                <v-hover v-for="(item, i) in Experience" :key="i">
-                                    <template v-slot:default="{ hover }">
-                                        <v-card class="mt-3">
-                                            <v-card-text class="text-center mx-5">
-                                                <v-list-item>
-                                                    <v-list-item-avatar class="elevation-5" width="80" height="80">
-                                                        <v-img :src="'images/'+item.logo"></v-img>
-                                                    </v-list-item-avatar>
-                                                    <v-list-item-content>
-                                                        <v-list-item-title>{{item.company}}</v-list-item-title>
-                                                        <v-list-item-subtitle>{{item.year}}</v-list-item-subtitle>
-                                                        <v-list-item-subtitle>{{item.address}}</v-list-item-subtitle>
-                                                    </v-list-item-content>
-                                                </v-list-item>
 
-                                            </v-card-text>
-
-                                            <v-expand-x-transition>
-                                                <v-overlay v-if="hover" absolute opacity="1" color="#14143C">
-                                                    <h4 class="blue--text">{{item.role}}</h4>
-                                                    <v-list dense tile flat color="#14143C">
-                                                        <v-list-item v-for="(info,i) in item.info" :key="i" class="my-n4">
-                                                            <v-list-item-title>{{info}}</v-list-item-title>
-                                                        </v-list-item>
-                                                    </v-list>
-
-                                                    <br>
-
-                                                </v-overlay>
-                                            </v-expand-x-transition>
-
-                                        </v-card>
-                                    </template>
-                                </v-hover>
-                            </v-list>
-                        </v-card-text>
-                    </v-card>
-                </v-col>
-
-                <v-col cols="4" lg="4" sm="6">
+                <v-col cols="12" lg="7">
                     <v-card class="seethrough mt-5" id="tskill">
                         <v-card-title class="black white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-cogs</v-icon>
@@ -193,7 +253,7 @@
                     </v-card>
                 </v-col>
 
-                <v-col cols="3" lg="3" sm="6">
+                <v-col cols="12" lg="5">
                     <v-card class="seethrough mt-5" id="skill">
                         <v-card-title class="black white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-puzzle</v-icon>
@@ -240,75 +300,70 @@
     </v-dialog>
 
     <v-footer color="grey darken-4" dark>
-        <v-row class="mt-2 text-center grey--text">
-            <v-col cols="4" class="text-left ml-4 mr-n4">
-                <h2 class="white--text">ABOUT</h2>
+        <v-card>
+            <v-row class="mt-2 text-center grey--text">
+                <v-col cols="12" md="4" sm="12" class="text-left">
+                    <h2 class="white--text">ABOUT</h2>
 
-                An IT Specialist whom specialize in different kinds of
-                computer-related expertise and with high level of
-                understanding in programming and web development.
-                Currently looking for opportunities to continue
-                developing as a well-rounded IT expert in any varieties
-                it covers.
+                    {{summary}}
 
-            </v-col>
-            <v-col cols="4" class="text-left">
-                <h2 id="reference" class="white--text">REFERENCES</h2>
-                <v-row>
-                    <v-col cols="6" sm="12" md="6" lg="4" xl="3" v-for="(item,i) in reference" :key="i">
-                        <v-list dense color="grey darken-4">
-                            <v-list-item>
-                                <v-list-item-content>
-                                    <v-list-item-title>{{item.name}}</v-list-item-title>
-                                    <v-list-item-subtitle>{{item.role}}</v-list-item-subtitle>
-                                    <v-list-item-subtitle>{{item.contact}}</v-list-item-subtitle>
-                                    <v-list-item-subtitle>{{item.gmail}}</v-list-item-subtitle>
-                                </v-list-item-content>
-                            </v-list-item>
-                        </v-list>
-                    </v-col>
-                </v-row>
-            </v-col>
-            <v-col cols="4" class="text-left">
-                <h2 class="white--text">INFORMATION</h2>
-
-                <v-list dense flat color="grey darken-4">
-                    <v-list-item v-for="(item,i) in detail" :key="i">
-                        <v-list-item-icon>
-                            <v-icon class="blue--text">
-                                {{item.icon}}
-                            </v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                {{item.text}}
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </v-list>
-                <br>
-                <v-col class="text-right">
-                    <v-btn v-for="icon in icons" :key="icon.icon" class="mx-4" icon :href="icon.link" target="_blank">
-                        <v-icon class="blue--text" size="24px">
-                            {{ icon.icon }}
-                        </v-icon>
-                    </v-btn>
                 </v-col>
+                <v-col cols="12" md="4" sm="12" class="text-left">
+                    <h2 id="reference" class="white--text">REFERENCES</h2>
+                    <v-row>
+                        <v-col cols="6" xl="4" lg="6" md="6" sm="4" v-for="(item,i) in reference" :key="i">
+                            <v-list dense color="grey darken-4">
+                                <v-list-item>
+                                    <v-list-item-content>
+                                        <v-list-item-title>{{item.name}}</v-list-item-title>
+                                        <v-list-item-subtitle>{{item.role}}</v-list-item-subtitle>
+                                        <v-list-item-subtitle>{{item.contact}}</v-list-item-subtitle>
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </v-list>
+                        </v-col>
+                    </v-row>
+                </v-col>
+                <v-col cols="12" md="4" sm="12" class="text-left">
+                    <h2 class="white--text">INFORMATION</h2>
 
-            </v-col>
-        </v-row>
-        <v-row class="mb-1 indigo darken-4 align-center">
-            <v-col cols="4"></v-col>
-            <v-col class="text-right">
-                © {{ new Date().getFullYear() }} - <strong>Powered by: </strong>
-            </v-col>
-            <v-col class="text-left">
-                <img src="images/laravel.png" height="30" width="30" />
-                <img src="images/vue.png" height="30" width="30" />
-            </v-col>
-            <v-col cols="4"></v-col>
-        </v-row>
+                    <v-list dense flat color="grey darken-4">
+                        <v-list-item v-for="(item,i) in detail" :key="i">
+                            <v-list-item-icon>
+                                <v-icon class="blue--text">
+                                    {{item.icon}}
+                                </v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-content>
+                                <v-list-item-title>
+                                    {{item.text}}
+                                </v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list>
+                    <br>
+                    <v-col class="text-right">
+                        <v-btn v-for="icon in icons" :key="icon.icon" class="mx-4" icon :href="icon.link" target="_blank">
+                            <v-icon class="blue--text" size="24px">
+                                {{ icon.icon }}
+                            </v-icon>
+                        </v-btn>
+                    </v-col>
 
+                </v-col>
+            </v-row>
+            <v-row class="mb-1 indigo darken-4 align-center">
+                <v-col cols="2" lg="4" sm="2"></v-col>
+                <v-col class="text-right">
+                    © {{ new Date().getFullYear() }} - <strong>Powered by: </strong>
+                </v-col>
+                <v-col class="text-left">
+                    <img src="images/laravel.png" height="30" width="30" />
+                    <img src="images/vue.png" height="30" width="30" />
+                </v-col>
+                <v-col cols="1" lg="4" sm="1"></v-col>
+            </v-row>
+        </v-card>
     </v-footer>
 
 </v-card>
@@ -317,8 +372,13 @@
 <script>
 export default {
     data: () => ({
+        summary:"A Technology Enthusiast with 1+ year of experience in web development and system support. Proficient in creating responsive user interfaces, writing and testing of codes, troubleshootings, database structure planning, and implementing new features based on client's request. Proven track record of improving system performance and enhancing user satisfaction.",
+        overlaycount: 0,
+        overlaycount2: 0,
         overlay: true,
         overlaytext: '',
+        overlaytext2: '',
+        gradpic:['gradpic.JPG','gradpic2.JPG'],
         icons: [{
                 icon: 'mdi-facebook',
                 link: 'https://www.facebook.com/jimwell.cruz.9'
@@ -462,8 +522,9 @@ export default {
             }
         ]
     }),
-    created() {
+      created() {
         this.overlaytext = this.Education[0]
+        this.overlaytext2 = this.Experience[0]
     },
     methods: {
         mOpenCarousel(item, title) {
@@ -471,10 +532,64 @@ export default {
             this.carouselitem.title = title
             console.log(this.carouselitem);
             this.carousel = true
+            console.log(this.$vuetify.breakpoint.name);
         },
-        mOpenOverlay(item) {
-            this.overlaytext = item
+        mOpenOverlay(item, count, con) {
+            if (con == 'exp') {
+                this.overlaycount2 = count
+                this.overlaytext2 = item
+            } else {
+                this.overlaycount = count
+                this.overlaytext = item
+            }
+
+        },
+        mShowOverlay(item) {
+
+            if (item == 1) {
+                this.overlaycount++
+                if (this.overlaycount == 3)
+                    this.overlaycount = 0
+                this.overlaytext = this.Education[this.overlaycount]
+
+            } else if (item == -1) {
+                this.overlaycount--
+                if (this.overlaycount == -1)
+                    this.overlaycount = 2
+                this.overlaytext = this.Education[this.overlaycount]
+
+            } else if (item == 2) {
+                this.overlaycount2++
+                if (this.overlaycount2 == 2)
+                    this.overlaycount2 = 0
+                this.overlaytext2 = this.Experience[this.overlaycount2]
+
+            } else {
+                this.overlaycount2--
+                if (this.overlaycount2 == -1)
+                    this.overlaycount2 = 1
+                this.overlaytext2 = this.Experience[this.overlaycount2]
+
+            }
+
         }
     }
 }
 </script>
+
+<style scoped>
+.v-col:hover {
+    transition-timing-function: ease;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>
+

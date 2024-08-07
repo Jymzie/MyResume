@@ -1,6 +1,10 @@
 @import '~vuetify/dist/vuetify.min.css';
 @import '~@mdi/font/css/materialdesignicons.css';
 
+html,body{
+    overflow-x: hidden;
+}
+
 p, span{
     font-size: 17px;
 }
@@ -13,3 +17,8 @@ p, span{
 .v-list{
     background-color: rgba(255, 255, 255, 0.1) !important;
 }
+
+.box {
+    transition: 1.5s all cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+
