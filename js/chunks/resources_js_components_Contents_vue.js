@@ -603,12 +603,13 @@ __webpack_require__.r(__webpack_exports__);
       overlay: true,
       overlaytext: '',
       overlaytext2: '',
+      gradpic: ['gradpic.JPG', 'gradpic2.JPG'],
       icons: [{
         icon: 'mdi-facebook',
-        link: 'https://www.google.com/'
+        link: 'https://www.facebook.com/jimwell.cruz.9'
       }, {
         icon: 'mdi-linkedin',
-        link: 'https://www.google.com/'
+        link: 'https://www.linkedin.com/in/jimwell-punzalan-80513830b/'
       }, {
         icon: 'mdi-gmail',
         link: 'https://www.google.com/'
@@ -616,22 +617,21 @@ __webpack_require__.r(__webpack_exports__);
       Education: [{
         school: 'CAVITE STATE UNIVERSITY - CCAT',
         logo: 'CVSU.png',
-        address: 'Tejeros Convention, Cavite',
+        address: "EM's Barrio, Tejeros Convention, Rosario, Cavite",
         year: '2018-2023',
         course: 'Bachelor of Science in Information Technology (BSIT)',
-        award: 'CUM LAUDE',
-        grade: '1.45/5.00'
+        award: 'CUM LAUDE'
       }, {
         school: 'SAINT AUGUSTINE - SENIOR HIGH',
         logo: 'SAS.png',
-        address: 'Tanza, Cavite',
+        address: 'Daang Amaya 3, Tanza, Cavite',
         year: '2016-2018',
         course: 'Senior High School - STEM Strand',
         award: ''
       }, {
         school: 'SAINT AUGUSTINE SCHOOL',
         logo: 'SAS.png',
-        address: 'Tanza, Cavite',
+        address: 'St. Cruz St., Poblacion 1, Tanza, Cavite',
         year: '2012-2016',
         course: 'Junior High School',
         award: 'BEST IN DEPORTMENT'
@@ -715,17 +715,15 @@ __webpack_require__.r(__webpack_exports__);
         text: '(+63) 961-122-9773'
       }],
       reference: [{
-        name: 'Ms. Jane Doe',
-        role: 'Teacher',
-        contact: '09611229773'
+        name: 'Aries M. Gelera',
+        role: 'Director, Research and Extension',
+        contact: '+63-935-163-2872',
+        gmail: 'aries.gelera@cvsu.edu.ph'
       }, {
-        name: 'Ms. Jane Doe',
-        role: 'Teacher',
-        contact: '09611229773'
-      }, {
-        name: 'Ms. Jane Doe',
-        role: 'Teacher',
-        contact: '09611229773'
+        name: 'Karlo Jose E. Nabablit',
+        role: 'Lecturer',
+        contact: '+63-917-573-6767',
+        gmail: 'karlojose.nabablit@cvsu.edu.ph'
       }]
     };
   },
