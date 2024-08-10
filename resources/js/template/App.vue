@@ -5,7 +5,7 @@
         :mini-variant="mini"
         :src="mini==false ? 'images/nav1.jpg' : ''"
         :color="mini == true ? 'grey darken-4' : ''" width="220">
-        <v-system-bar />
+
        <v-list v-if="mini == true">
           <v-list-item class="px-2">
             <v-list-item-avatar>
@@ -13,7 +13,7 @@
             </v-list-item-avatar>
           </v-list-item>
 
-          <v-list-item link @click="mini=!mini" v-show="screensize > 540">
+          <v-list-item link @click="mini=!mini"  v-show="screensize >= 541">
                 <v-icon class="white--text">mdi-magnify-plus</v-icon>
           </v-list-item>
         </v-list>
@@ -48,8 +48,8 @@
         </v-list>
 
         <v-divider/>
-        <v-list shaped dense class="grey--text align-center">
-            <v-list-item v-for="(item, i) in items" :key="i" :to="item.to">
+        <v-list shaped dense class="grey--text align-center grey darken-4">
+            <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" @click="SoundEffect('select')">
                 <v-list-item-icon>
                     <v-icon class="white--text">{{item.icon}}</v-icon>
                 </v-list-item-icon>
@@ -62,7 +62,7 @@
 
     <v-speed-dial v-model="fab" top elevation-10 right direction="bottom" transition="slide-y-transition">
         <template v-slot:activator>
-            <v-btn v-model="fab" color="blue darken-2" dark fab>
+            <v-btn v-model="fab" color="blue darken-2" @click="SoundEffect('slide')" dark fab>
                 <v-icon v-if="fab">
                     mdi-package-variant
                 </v-icon>
@@ -83,7 +83,7 @@
     </v-speed-dial>
 
     <v-main>
-        <router-view/>
+        <router-view width="device-width"/>
     </v-main>
 
     <v-dialog v-model="email" width="50%" persistent>
@@ -133,7 +133,7 @@ export default {
         fab: false,
         email: false,
         message: {},
-        file: 'Resume - Punzalan, Jimwell C.pdf',
+        file: 'Resume - Punzalan, Jimwell C.jpg',
         drawer: true,
         mini:true,
         items: [{
@@ -169,11 +169,11 @@ export default {
                 }
             },
             {
-                text: 'TECHNICAL SKILLS',
+                text: 'SKILLS',
                 icon: 'mdi-cogs',
                 to: {
                     name: 'Contents',
-                    hash: '#tskill'
+                    hash: '#skill'
                 }
             },
             {
@@ -213,125 +213,34 @@ export default {
                 color: 'indigo'
             }
         ],
-        notificationSystem: {
-            options: {
-                show: {
-                    theme: "dark",
-                    icon: "icon-person",
-                    position: "topCenter",
-                    progressBarColor: "rgb(0, 255, 184)",
-                    buttons: [
-                        [
-                            "<button>Ok</button>",
-                            function (instance, toast) {
-                                alert("Hello world!");
-                            },
-                            true
-                        ],
-                        [
-                            "<button>Close</button>",
-                            function (instance, toast) {
-                                instance.hide({
-                                        transitionOut: "fadeOutUp",
-                                        onClosing: function (instance, toast, closedBy) {
-                                            console.info("closedBy: " + closedBy);
-                                        }
-                                    },
-                                    toast,
-                                    "buttonName"
-                                );
-                            }
-                        ]
-                    ],
-                    onOpening: function (instance, toast) {
-                        console.info("callback abriu!");
-                    },
-                    onClosing: function (instance, toast, closedBy) {
-                        console.info("closedBy: " + closedBy);
-                    }
-                },
-                ballon: {
-                    balloon: true,
-                    position: "bottomCenter"
-                },
-                info: {
-                    position: "bottomLeft"
-                },
-                success: {
-                    position: "bottomRight"
-                },
-                warning: {
-                    position: "topLeft"
-                },
-                error: {
-                    position: "topRight"
-                },
-                question: {
-                    timeout: 20000,
-                    close: false,
-                    overlay: true,
-                    toastOnce: true,
-                    id: "question",
-                    zindex: 999,
-                    position: "center",
-                    buttons: [
-                        [
-                            "<button><b>YES</b></button>",
-                            function (instance, toast) {
-                                instance.hide({
-                                    transitionOut: "fadeOut"
-                                }, toast, "button");
-                            },
-                            true
-                        ],
-                        [
-                            "<button>NO</button>",
-                            function (instance, toast) {
-                                instance.hide({
-                                    transitionOut: "fadeOut"
-                                }, toast, "button");
-                            }
-                        ]
-                    ],
-                    onClosing: function (instance, toast, closedBy) {
-                        console.info("Closing | closedBy: " + closedBy);
-                    },
-                    onClosed: function (instance, toast, closedBy) {
-                        console.info("Closed | closedBy: " + closedBy);
-                    }
-                }
-            }
-        }
     }),
     created() {
         this.drawer = true
         this.screensize = screen.width
     },
     methods: {
+        SoundEffect(track){
+            let sound = new Audio(`soundeffect/${track}.mp3`)
+            sound.play()
+        },
         mDownload() {
-            // axios.get(`api/Download/create?path=${this.file}`, {
-            //         responseType: 'blob'
-            //     })
-            //     .then(res => {
-            //         const url = window.URL.createObjectURL(new Blob([res.data]))
-            //         const link = document.createElement("a");
-            //         link.href = url
-            //         link.setAttribute("download", this.file)
-            //         document.body.appendChild(link)
-            //         link.click();
-            //         link.remove();
-            //         this.$toast.success('Download Successfully!', 'OK', this.notificationSystem.options.success)
-            //     })
+           this.SoundEffect('select')
              window.open('https://drive.google.com/uc?export=download&id=1ECbvv66sDgqQ0B-gz3mIRok_4d0BFNJq', '_blank');
+            
+                   
+                 setTimeout(()=>{
+                     this.$toast.success('Download Successfully!', 'OK', this.$store.state.notificationSystem.options.success)
+                     this.SoundEffect('success')
+                },500)
         },
         mSend() {
             console.log(this.message)
             axios.post('api/Download',this.message)
             .then(res => {
                 this.email = false
-                this.$toast.success('E-mail Sent!', 'OK', this.notificationSystem.options.success)
+                this.$toast.success('E-mail Sent!', 'OK', this.$store.state.notificationSystem.options.success)
             }).catch(({response}) => {
-                this.$toast.error(response.data, 'Error', this.notificationSystem.options.error)
+                this.$toast.error(response.data, 'Error', this.$store.state.notificationSystem.options.error)
             })
             
         }
@@ -345,6 +254,14 @@ export default {
                 return true
             else
                 return false
+        }
+    },
+    watch:{
+        mini(val){
+            if(val == false)
+                this.SoundEffect('slide')
+            else
+                this.SoundEffect('close')
         }
     }
 }

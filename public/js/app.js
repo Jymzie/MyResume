@@ -2201,7 +2201,7 @@ __webpack_require__.r(__webpack_exports__);
       fab: false,
       email: false,
       message: {},
-      file: 'Resume - Punzalan, Jimwell C.pdf',
+      file: 'Resume - Punzalan, Jimwell C.jpg',
       drawer: true,
       mini: true,
       items: [{
@@ -2233,11 +2233,11 @@ __webpack_require__.r(__webpack_exports__);
           hash: '#portfolios'
         }
       }, {
-        text: 'TECHNICAL SKILLS',
+        text: 'SKILLS',
         icon: 'mdi-cogs',
         to: {
           name: 'Contents',
-          hash: '#tskill'
+          hash: '#skill'
         }
       }, {
         text: 'REFERENCES',
@@ -2268,73 +2268,7 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Send e-mail',
         icon: 'mdi-email',
         color: 'indigo'
-      }],
-      notificationSystem: {
-        options: {
-          show: {
-            theme: "dark",
-            icon: "icon-person",
-            position: "topCenter",
-            progressBarColor: "rgb(0, 255, 184)",
-            buttons: [["<button>Ok</button>", function (instance, toast) {
-              alert("Hello world!");
-            }, true], ["<button>Close</button>", function (instance, toast) {
-              instance.hide({
-                transitionOut: "fadeOutUp",
-                onClosing: function onClosing(instance, toast, closedBy) {
-                  console.info("closedBy: " + closedBy);
-                }
-              }, toast, "buttonName");
-            }]],
-            onOpening: function onOpening(instance, toast) {
-              console.info("callback abriu!");
-            },
-            onClosing: function onClosing(instance, toast, closedBy) {
-              console.info("closedBy: " + closedBy);
-            }
-          },
-          ballon: {
-            balloon: true,
-            position: "bottomCenter"
-          },
-          info: {
-            position: "bottomLeft"
-          },
-          success: {
-            position: "bottomRight"
-          },
-          warning: {
-            position: "topLeft"
-          },
-          error: {
-            position: "topRight"
-          },
-          question: {
-            timeout: 20000,
-            close: false,
-            overlay: true,
-            toastOnce: true,
-            id: "question",
-            zindex: 999,
-            position: "center",
-            buttons: [["<button><b>YES</b></button>", function (instance, toast) {
-              instance.hide({
-                transitionOut: "fadeOut"
-              }, toast, "button");
-            }, true], ["<button>NO</button>", function (instance, toast) {
-              instance.hide({
-                transitionOut: "fadeOut"
-              }, toast, "button");
-            }]],
-            onClosing: function onClosing(instance, toast, closedBy) {
-              console.info("Closing | closedBy: " + closedBy);
-            },
-            onClosed: function onClosed(instance, toast, closedBy) {
-              console.info("Closed | closedBy: " + closedBy);
-            }
-          }
-        }
-      }
+      }]
     };
   },
   created: function created() {
@@ -2342,37 +2276,39 @@ __webpack_require__.r(__webpack_exports__);
     this.screensize = screen.width;
   },
   methods: {
+    SoundEffect: function SoundEffect(track) {
+      var sound = new Audio("soundeffect/".concat(track, ".mp3"));
+      sound.play();
+    },
     mDownload: function mDownload() {
-      // axios.get(`api/Download/create?path=${this.file}`, {
-      //         responseType: 'blob'
-      //     })
-      //     .then(res => {
-      //         const url = window.URL.createObjectURL(new Blob([res.data]))
-      //         const link = document.createElement("a");
-      //         link.href = url
-      //         link.setAttribute("download", this.file)
-      //         document.body.appendChild(link)
-      //         link.click();
-      //         link.remove();
-      //         this.$toast.success('Download Successfully!', 'OK', this.notificationSystem.options.success)
-      //     })
+      var _this = this;
+      this.SoundEffect('select');
       window.open('https://drive.google.com/uc?export=download&id=1ECbvv66sDgqQ0B-gz3mIRok_4d0BFNJq', '_blank');
+      setTimeout(function () {
+        _this.$toast.success('Download Successfully!', 'OK', _this.$store.state.notificationSystem.options.success);
+        _this.SoundEffect('success');
+      }, 500);
     },
     mSend: function mSend() {
-      var _this = this;
+      var _this2 = this;
       console.log(this.message);
       axios.post('api/Download', this.message).then(function (res) {
-        _this.email = false;
-        _this.$toast.success('E-mail Sent!', 'OK', _this.notificationSystem.options.success);
+        _this2.email = false;
+        _this2.$toast.success('E-mail Sent!', 'OK', _this2.$store.state.notificationSystem.options.success);
       })["catch"](function (_ref) {
         var response = _ref.response;
-        _this.$toast.error(response.data, 'Error', _this.notificationSystem.options.error);
+        _this2.$toast.error(response.data, 'Error', _this2.$store.state.notificationSystem.options.error);
       });
     }
   },
   computed: {
     Filled: function Filled() {
       if (this.message.name == null || this.message.name == '' || this.message.email == null || this.message.email == '' || this.message.title == null || this.message.title == '' || this.message.content == null || this.message.content == '') return true;else return false;
+    }
+  },
+  watch: {
+    mini: function mini(val) {
+      if (val == false) this.SoundEffect('slide');else this.SoundEffect('close');
     }
   }
 });
@@ -2541,7 +2477,74 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
-  state: {},
+  state: {
+    notificationSystem: {
+      options: {
+        show: {
+          theme: "dark",
+          icon: "icon-person",
+          position: "topCenter",
+          progressBarColor: "rgb(0, 255, 184)",
+          buttons: [["<button>Ok</button>", function (instance, toast) {
+            alert("Hello world!");
+          }, true], ["<button>Close</button>", function (instance, toast) {
+            instance.hide({
+              transitionOut: "fadeOutUp",
+              onClosing: function onClosing(instance, toast, closedBy) {
+                console.info("closedBy: " + closedBy);
+              }
+            }, toast, "buttonName");
+          }]],
+          onOpening: function onOpening(instance, toast) {
+            console.info("callback abriu!");
+          },
+          onClosing: function onClosing(instance, toast, closedBy) {
+            console.info("closedBy: " + closedBy);
+          }
+        },
+        ballon: {
+          balloon: true,
+          position: "bottomCenter"
+        },
+        info: {
+          position: "bottomLeft"
+        },
+        success: {
+          position: "bottomRight"
+        },
+        warning: {
+          position: "topLeft"
+        },
+        error: {
+          position: "topRight"
+        },
+        question: {
+          timeout: 20000,
+          close: false,
+          overlay: true,
+          toastOnce: true,
+          id: "question",
+          zindex: 999,
+          position: "center",
+          buttons: [["<button><b>YES</b></button>", function (instance, toast) {
+            instance.hide({
+              transitionOut: "fadeOut"
+            }, toast, "button");
+          }, true], ["<button>NO</button>", function (instance, toast) {
+            instance.hide({
+              transitionOut: "fadeOut"
+            }, toast, "button");
+          }]],
+          onClosing: function onClosing(instance, toast, closedBy) {
+            console.info("Closing | closedBy: " + closedBy);
+          },
+          onClosed: function onClosed(instance, toast, closedBy) {
+            console.info("Closed | closedBy: " + closedBy);
+          }
+        }
+      }
+    }
+  },
   actions: {},
   mutations: {},
   getters: {},
@@ -20570,8 +20573,6 @@ var render = function () {
           },
         },
         [
-          _c("v-system-bar"),
-          _vm._v(" "),
           _vm.mini == true
             ? _c(
                 "v-list",
@@ -20596,8 +20597,8 @@ var render = function () {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.screensize > 540,
-                          expression: "screensize > 540",
+                          value: _vm.screensize >= 541,
+                          expression: "screensize >= 541",
                         },
                       ],
                       attrs: { link: "" },
@@ -20746,13 +20747,21 @@ var render = function () {
           _c(
             "v-list",
             {
-              staticClass: "grey--text align-center",
+              staticClass: "grey--text align-center grey darken-4",
               attrs: { shaped: "", dense: "" },
             },
             _vm._l(_vm.items, function (item, i) {
               return _c(
                 "v-list-item",
-                { key: i, attrs: { to: item.to } },
+                {
+                  key: i,
+                  attrs: { to: item.to },
+                  on: {
+                    click: function ($event) {
+                      return _vm.SoundEffect("select")
+                    },
+                  },
+                },
                 [
                   _c(
                     "v-list-item-icon",
@@ -20802,6 +20811,11 @@ var render = function () {
                     "v-btn",
                     {
                       attrs: { color: "blue darken-2", dark: "", fab: "" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.SoundEffect("slide")
+                        },
+                      },
                       model: {
                         value: _vm.fab,
                         callback: function ($$v) {
@@ -20897,7 +20911,11 @@ var render = function () {
         2
       ),
       _vm._v(" "),
-      _c("v-main", [_c("router-view")], 1),
+      _c(
+        "v-main",
+        [_c("router-view", { attrs: { width: "device-width" } })],
+        1
+      ),
       _vm._v(" "),
       _c(
         "v-dialog",

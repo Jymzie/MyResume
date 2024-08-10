@@ -26233,7 +26233,7 @@ html,body{
     overflow-x: hidden;
 }
 
-p, span{
+p, span, li{
     font-size: 17px;
 }
 
