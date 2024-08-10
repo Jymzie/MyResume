@@ -586,10 +586,6 @@ __webpack_require__.r(__webpack_exports__);
       setTimeout(function () {
         _this.intro = false;
         _this.$toast.show('Welcome!', 'Jymz:', _this.$store.state.notificationSystem.options.ballon);
-        var link = document.createElement("a");
-        link.href = "http://10.169.142.112/Resume/#summary";
-        link.click();
-        link.remove();
         setTimeout(function () {
           _this.SoundEffect('success');
         }, 300);
@@ -2103,7 +2099,7 @@ var render = function () {
       _c(
         "v-dialog",
         {
-          attrs: { "content-class": "elevation-0" },
+          attrs: { "content-class": "elevation-0", persistent: "" },
           model: {
             value: _vm.intro,
             callback: function ($$v) {

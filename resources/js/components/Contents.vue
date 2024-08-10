@@ -300,7 +300,7 @@
         </div>
     </v-parallax>
 
-    <v-dialog v-model="intro" content-class="elevation-0" >
+    <v-dialog v-model="intro" content-class="elevation-0" persistent>
         <div class="d-flex text-center">
 
             <v-col cols="0" lg="3" md="2" sm="0" v-show="$vuetify.breakpoint.name == 'lg' || $vuetify.breakpoint.name == 'md'"></v-col>
@@ -596,10 +596,6 @@ export default {
             setTimeout(() => {
                 this.intro = false
                 this.$toast.show('Welcome!', 'Jymz:', this.$store.state.notificationSystem.options.ballon)
-                const link = document.createElement("a");
-                link.href = "http://10.169.142.112/Resume/#summary"
-                link.click();
-                link.remove();
                 setTimeout(()=>{
                     this.SoundEffect('success')
                 },300)
