@@ -2265,8 +2265,8 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'mdi-download',
         color: 'green'
       }, {
-        text: 'Send e-mail',
-        icon: 'mdi-email',
+        text: 'Documents',
+        icon: 'mdi-file-document-multiple-outline',
         color: 'indigo'
       }]
     };
@@ -2288,6 +2288,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.$toast.success('Download Successfully!', 'OK', _this.$store.state.notificationSystem.options.success);
         _this.SoundEffect('success');
       }, 500);
+    },
+    mOpenDocs: function mOpenDocs() {
+      this.SoundEffect('select');
+      window.open('https://drive.google.com/drive/folders/1YqL7a7piEq4LjH0-X6ifiwhuKQFNiu0f?usp=drive_link', '_blank');
     },
     mSend: function mSend() {
       var _this2 = this;
@@ -20883,7 +20887,7 @@ var render = function () {
                                     click: function ($event) {
                                       item.text == "Download Resume"
                                         ? _vm.mDownload()
-                                        : (_vm.email = !_vm.email)
+                                        : _vm.mOpenDocs()
                                     },
                                   },
                                 },

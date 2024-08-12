@@ -73,7 +73,7 @@
         </template>
         <v-tooltip left v-for="(item,i) in speeddials" :key="i">
             <template v-slot:activator="{on, attr}">
-                <v-btn v-on="on" v-bind="attr" fab dark @click="item.text == 'Download Resume' ? mDownload() : email=!email" small :color="item.color">
+                <v-btn v-on="on" v-bind="attr" fab dark @click="item.text == 'Download Resume' ? mDownload() : mOpenDocs()" small :color="item.color">
                     <v-icon>{{item.icon}}</v-icon>
                 </v-btn>
             </template>
@@ -208,8 +208,8 @@ export default {
                 color: 'green'
             },
             {
-                text: 'Send e-mail',
-                icon: 'mdi-email',
+                text: 'Documents',
+                icon: 'mdi-file-document-multiple-outline',
                 color: 'indigo'
             }
         ],
@@ -233,7 +233,12 @@ export default {
                      this.SoundEffect('success')
                 },500)
         },
+        mOpenDocs(){
+             this.SoundEffect('select')
+             window.open('https://drive.google.com/drive/folders/1YqL7a7piEq4LjH0-X6ifiwhuKQFNiu0f?usp=drive_link', '_blank');
+        },
         mSend() {
+        
             console.log(this.message)
             axios.post('api/Download',this.message)
             .then(res => {

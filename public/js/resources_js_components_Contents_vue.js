@@ -533,21 +533,21 @@ __webpack_require__.r(__webpack_exports__);
         info: ['Used the fundamental ways of creating a website (HTML, CSS, Javascript and PHP)', 'Developed the ElStudio I.D. System for biometric purposes']
       }],
       Portfolios: [{
-        img: ['BHMLogin.PNG', 'BMProcess.png', 'BHMDashboard.PNG', 'BHMChecking.png'],
+        img: ['placeholder.png'],
         title: 'Balcony Handrail Product Management System',
         info: 'The system covers the management of balcony handrail products from receiving of data from HRD up to exporting of actual materials. It includes product allocation, process status, completeness and control of products quality and delivery.'
       }, {
-        img: ['AMTable.PNG', 'AMTable2.PNG', 'AMDialog.png', 'AMKaizen.png', 'AMBefore.png', 'AMAfter.png'],
+        img: ['placeholder.png'],
         title: 'Access Manager',
         info: "Access Manager is a Kaizen System that covers the BarchartMaker and HTIShukka System's account creation and access control."
       }, {
         img: ['ElsHome.png', 'ElsScan.png', 'ElsQR.png'],
         title: 'ElStudio I.D. System',
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
+        info: 'The system is built in with biometric function for monitoring of attendance and inventory'
       }, {
-        img: ['PetAdopt.png', 'PetHome.png'],
+        img: ['PetAdopt.png', 'PetInfo.png', 'PetHome.png'],
         title: 'WCMS: Pet Adopt Website',
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
+        info: 'Pet Adopt is a website made by the students of Cavite State University - CCAT Campus that can help some animals especially the homeless one in finding their own home through people who can access the website with a single click'
       }],
       detail: [{
         icon: 'mdi-home',
@@ -2343,252 +2343,239 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c(
-        "v-footer",
-        { attrs: { color: "grey darken-4", dark: "" } },
-        [
-          _c(
-            "v-card",
-            [
-              _c(
-                "v-row",
-                { staticClass: "mt-2 text-center grey--text" },
-                [
-                  _c(
-                    "v-col",
-                    {
-                      staticClass: "text-left",
-                      attrs: { cols: "12", md: "4", sm: "12" },
-                    },
-                    [
-                      _c("h2", { staticClass: "white--text" }, [
-                        _vm._v("ABOUT"),
-                      ]),
-                      _vm._v(
-                        "\r\n\r\n                    " +
-                          _vm._s(_vm.summary) +
-                          "\r\n\r\n                "
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-col",
-                    {
-                      staticClass: "text-left",
-                      attrs: { cols: "12", md: "4", sm: "12" },
-                    },
-                    [
-                      _c(
-                        "h2",
-                        {
-                          staticClass: "white--text",
-                          attrs: { id: "reference" },
-                        },
-                        [_vm._v("REFERENCES")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-row",
-                        _vm._l(_vm.reference, function (item, i) {
-                          return _c(
-                            "v-col",
-                            { key: i, attrs: { cols: "6", xl: "4", lg: "6" } },
-                            [
-                              _c(
-                                "v-list",
-                                {
-                                  attrs: { dense: "", color: "grey darken-4" },
-                                },
-                                [
-                                  _c(
-                                    "v-list-item",
-                                    [
-                                      _c(
-                                        "v-list-item-content",
-                                        [
-                                          _c("v-list-item-title", [
-                                            _vm._v(_vm._s(item.name)),
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("v-list-item-subtitle", [
-                                            _vm._v(_vm._s(item.role)),
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("v-list-item-subtitle", [
-                                            _vm._v(_vm._s(item.contact)),
-                                          ]),
-                                        ],
-                                        1
-                                      ),
-                                    ],
-                                    1
+      _c("v-footer", { attrs: { color: "grey darken-4", dark: "" } }, [
+        _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              { staticClass: "mt-2 text-center grey--text" },
+              [
+                _c(
+                  "v-col",
+                  {
+                    staticClass: "text-left",
+                    attrs: { cols: "12", md: "4", sm: "12" },
+                  },
+                  [
+                    _c("h2", { staticClass: "white--text" }, [_vm._v("ABOUT")]),
+                    _vm._v(
+                      "\r\n\r\n                    " +
+                        _vm._s(_vm.summary) +
+                        "\r\n\r\n                "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  {
+                    staticClass: "text-left",
+                    attrs: { cols: "12", md: "4", sm: "12" },
+                  },
+                  [
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "white--text",
+                        attrs: { id: "reference" },
+                      },
+                      [_vm._v("REFERENCES")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-row",
+                      _vm._l(_vm.reference, function (item, i) {
+                        return _c(
+                          "v-col",
+                          { key: i, attrs: { cols: "6", xl: "4", lg: "6" } },
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { dense: "", color: "grey darken-4" } },
+                              [
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v(_vm._s(item.name)),
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v(_vm._s(item.role)),
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v(_vm._s(item.contact)),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        )
+                      }),
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  {
+                    staticClass: "text-left",
+                    attrs: { cols: "12", md: "4", sm: "12" },
+                  },
+                  [
+                    _c("h2", { staticClass: "white--text" }, [
+                      _vm._v("INFORMATION"),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "v-list",
+                      {
+                        attrs: { dense: "", flat: "", color: "grey darken-4" },
+                      },
+                      _vm._l(_vm.detail, function (item, i) {
+                        return _c(
+                          "v-list-item",
+                          { key: i },
+                          [
+                            _c(
+                              "v-list-item-icon",
+                              [
+                                _c("v-icon", { staticClass: "blue--text" }, [
+                                  _vm._v(
+                                    "\r\n                                    " +
+                                      _vm._s(item.icon) +
+                                      "\r\n                                "
                                   ),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          )
-                        }),
-                        1
-                      ),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-col",
-                    {
-                      staticClass: "text-left",
-                      attrs: { cols: "12", md: "4", sm: "12" },
-                    },
-                    [
-                      _c("h2", { staticClass: "white--text" }, [
-                        _vm._v("INFORMATION"),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-list",
-                        {
-                          attrs: {
-                            dense: "",
-                            flat: "",
-                            color: "grey darken-4",
-                          },
-                        },
-                        _vm._l(_vm.detail, function (item, i) {
-                          return _c(
-                            "v-list-item",
-                            { key: i },
-                            [
-                              _c(
-                                "v-list-item-icon",
-                                [
-                                  _c("v-icon", { staticClass: "blue--text" }, [
-                                    _vm._v(
-                                      "\r\n                                    " +
-                                        _vm._s(item.icon) +
-                                        "\r\n                                "
-                                    ),
-                                  ]),
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item-content",
-                                [
-                                  _c("v-list-item-title", [
-                                    _vm._v(
-                                      "\r\n                                    " +
-                                        _vm._s(item.text) +
-                                        "\r\n                                "
-                                    ),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          )
-                        }),
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { staticClass: "text-right" },
-                        _vm._l(_vm.icons, function (icon) {
-                          return _c(
-                            "v-btn",
-                            {
-                              key: icon.icon,
-                              staticClass: "mx-4",
-                              attrs: {
-                                icon: "",
-                                href: icon.link,
-                                target: "_blank",
-                              },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.SoundEffect("select")
-                                },
+                                ]),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-item-content",
+                              [
+                                _c("v-list-item-title", [
+                                  _vm._v(
+                                    "\r\n                                    " +
+                                      _vm._s(item.text) +
+                                      "\r\n                                "
+                                  ),
+                                ]),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        )
+                      }),
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "v-col",
+                      { staticClass: "text-right" },
+                      _vm._l(_vm.icons, function (icon) {
+                        return _c(
+                          "v-btn",
+                          {
+                            key: icon.icon,
+                            staticClass: "mx-4",
+                            attrs: {
+                              icon: "",
+                              href: icon.link,
+                              target: "_blank",
+                            },
+                            on: {
+                              click: function ($event) {
+                                return _vm.SoundEffect("select")
                               },
                             },
-                            [
-                              _c(
-                                "v-icon",
-                                {
-                                  staticClass: "blue--text",
-                                  attrs: { size: "24px" },
-                                },
-                                [
-                                  _vm._v(
-                                    "\r\n                                " +
-                                      _vm._s(icon.icon) +
-                                      "\r\n                            "
-                                  ),
-                                ]
-                              ),
-                            ],
-                            1
-                          )
-                        }),
-                        1
-                      ),
-                    ],
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-row",
-                { staticClass: "mb-1 indigo darken-4 align-center" },
-                [
-                  _c("v-col", { attrs: { cols: "2", lg: "4", sm: "2" } }),
-                  _vm._v(" "),
-                  _c("v-col", { staticClass: "text-right" }, [
-                    _vm._v(
-                      "\r\n                    © " +
-                        _vm._s(new Date().getFullYear()) +
-                        " - "
+                          },
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                staticClass: "blue--text",
+                                attrs: { size: "24px" },
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n                                " +
+                                    _vm._s(icon.icon) +
+                                    "\r\n                            "
+                                ),
+                              ]
+                            ),
+                          ],
+                          1
+                        )
+                      }),
+                      1
                     ),
-                    _c("strong", [_vm._v("Powered by: ")]),
-                  ]),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-row",
+              { staticClass: "mb-1 indigo darken-4 align-center" },
+              [
+                _c("v-col", { attrs: { cols: "2", lg: "4", sm: "2" } }),
+                _vm._v(" "),
+                _c("v-col", { staticClass: "text-right" }, [
+                  _vm._v(
+                    "\r\n                    © " +
+                      _vm._s(new Date().getFullYear()) +
+                      " - "
+                  ),
+                  _c("strong", [_vm._v("Powered by: ")]),
+                ]),
+                _vm._v(" "),
+                _c("v-col", { staticClass: "text-left" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "images/skill/Laravel.png",
+                      height: "30",
+                      width: "30",
+                    },
+                  }),
                   _vm._v(" "),
-                  _c("v-col", { staticClass: "text-left" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "images/skill/Laravel.png",
-                        height: "30",
-                        width: "30",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "images/skill/Vue.png",
-                        height: "30",
-                        width: "30",
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("v-col", { attrs: { cols: "1", lg: "4", sm: "1" } }),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-        ],
-        1
-      ),
+                  _c("img", {
+                    attrs: {
+                      src: "images/skill/Vue.png",
+                      height: "30",
+                      width: "30",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("v-col", { attrs: { cols: "1", lg: "4", sm: "1" } }),
+              ],
+              1
+            ),
+          ],
+          1
+        ),
+      ]),
     ],
     1
   )

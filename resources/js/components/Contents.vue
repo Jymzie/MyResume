@@ -351,7 +351,7 @@
     </v-dialog>
 
     <v-footer color="grey darken-4" dark>
-        <v-card>
+        <div>
             <v-row class="mt-2 text-center grey--text">
                 <v-col cols="12" md="4" sm="12" class="text-left">
                     <h2 class="white--text">ABOUT</h2>
@@ -414,7 +414,7 @@
                 </v-col>
                 <v-col cols="1" lg="4" sm="1"></v-col>
             </v-row>
-        </v-card>
+        </div>
     </v-footer>
 
 </v-card>
@@ -537,24 +537,24 @@ export default {
             }
         ],
         Portfolios: [{
-                img: ['BHMLogin.PNG', 'BMProcess.png', 'BHMDashboard.PNG', 'BHMChecking.png'],
+                img: ['placeholder.png'],
                 title: 'Balcony Handrail Product Management System',
                 info: 'The system covers the management of balcony handrail products from receiving of data from HRD up to exporting of actual materials. It includes product allocation, process status, completeness and control of products quality and delivery.'
             },
             {
-                img: ['AMTable.PNG', 'AMTable2.PNG', 'AMDialog.png', 'AMKaizen.png', 'AMBefore.png', 'AMAfter.png'],
+                img: ['placeholder.png'],
                 title: 'Access Manager',
                 info: "Access Manager is a Kaizen System that covers the BarchartMaker and HTIShukka System's account creation and access control."
             },
             {
                 img: ['ElsHome.png', 'ElsScan.png', 'ElsQR.png'],
                 title: 'ElStudio I.D. System',
-                info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
+                info: 'The system is built in with biometric function for monitoring of attendance and inventory'
             },
             {
-                img: ['PetAdopt.png', 'PetHome.png'],
+                img: ['PetAdopt.png', 'PetInfo.png', 'PetHome.png'],
                 title: 'WCMS: Pet Adopt Website',
-                info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.'
+                info: 'Pet Adopt is a website made by the students of Cavite State University - CCAT Campus that can help some animals especially the homeless one in finding their own home through people who can access the website with a single click'
             }
         ],
         detail: [{
