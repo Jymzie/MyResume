@@ -3,8 +3,8 @@
     <v-navigation-drawer app v-model="drawer" touchless
         mobile-breakpoint="0"
         :mini-variant="mini"
-        :src="mini==false ? 'images/nav1.jpg' : ''"
-        :color="mini == true ? 'grey darken-4' : ''" width="220">
+       class="navcolor"
+        width="220">
 
        <v-list v-if="mini == true">
           <v-list-item class="px-2">
@@ -28,8 +28,8 @@
                 <template v-slot:activator="{on, attr}">
                     <v-list-item link v-on="on" v-bind="attr">
                         <v-list-item-content>
-                            <v-list-item-title class="graytext font-weight-bold text-center">Jimwell C. Punzalan</v-list-item-title>
-                            <v-list-item-subtitle class="graytext text-center">See More...
+                            <v-list-item-title class="white--text font-weight-bold text-center">Jimwell C. Punzalan</v-list-item-title>
+                            <v-list-item-subtitle class="white--text text-center">See More...
 
                                 <v-icon>mdi-menu-right</v-icon>
 
@@ -48,7 +48,7 @@
         </v-list>
 
         <v-divider/>
-        <v-list shaped dense class="grey--text align-center grey darken-4">
+       
             <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" @click="SoundEffect('select')">
                 <v-list-item-icon>
                     <v-icon class="white--text">{{item.icon}}</v-icon>
@@ -57,12 +57,12 @@
                     <v-list-item-title class="white--text">{{item.text}}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-        </v-list>
+       
     </v-navigation-drawer>
 
     <v-speed-dial v-model="fab" top elevation-10 right direction="bottom" transition="slide-y-transition">
         <template v-slot:activator>
-            <v-btn v-model="fab" color="blue darken-2" @click="SoundEffect('slide')" dark fab>
+            <v-btn v-model="fab" color="titlecolor" @click="SoundEffect('slide')" dark fab>
                 <v-icon v-if="fab">
                     mdi-package-variant
                 </v-icon>
@@ -83,7 +83,7 @@
     </v-speed-dial>
 
     <v-main>
-        <router-view width="device-width"/>
+        <router-view width="device-width" :SoundEffect="SoundEffect" :notificationSystem="notificationSystem" :detail="detail"/>
     </v-main>
 
     <v-dialog v-model="email" width="50%" persistent>
@@ -213,6 +213,95 @@ export default {
                 color: 'indigo'
             }
         ],
+        notificationSystem: {
+            options: {
+                show: {
+                    theme: "dark",
+                    icon: "icon-person",
+                    position: "topCenter",
+                    progressBarColor: "rgb(0, 255, 184)",
+                    buttons: [
+                        [
+                            "<button>Ok</button>",
+                            function (instance, toast) {
+                                alert("Hello world!");
+                            },
+                            true
+                        ],
+                        [
+                            "<button>Close</button>",
+                            function (instance, toast) {
+                                instance.hide({
+                                        transitionOut: "fadeOutUp",
+                                        onClosing: function (instance, toast, closedBy) {
+                                            console.info("closedBy: " + closedBy);
+                                        }
+                                    },
+                                    toast,
+                                    "buttonName"
+                                );
+                            }
+                        ]
+                    ],
+                    onOpening: function (instance, toast) {
+                        console.info("callback abriu!");
+                    },
+                    onClosing: function (instance, toast, closedBy) {
+                        console.info("closedBy: " + closedBy);
+                    }
+                },
+                ballon: {
+                    balloon: true,
+                    position: "bottomCenter"
+                },
+                info: {
+                    position: "bottomLeft"
+                },
+                success: {
+                    position: "bottomRight"
+                },
+                warning: {
+                    position: "topLeft"
+                },
+                error: {
+                    position: "topRight"
+                },
+                question: {
+                    timeout: 20000,
+                    close: false,
+                    overlay: true,
+                    toastOnce: true,
+                    id: "question",
+                    zindex: 999,
+                    position: "center",
+                    buttons: [
+                        [
+                            "<button><b>YES</b></button>",
+                            function (instance, toast) {
+                                instance.hide({
+                                    transitionOut: "fadeOut"
+                                }, toast, "button");
+                            },
+                            true
+                        ],
+                        [
+                            "<button>NO</button>",
+                            function (instance, toast) {
+                                instance.hide({
+                                    transitionOut: "fadeOut"
+                                }, toast, "button");
+                            }
+                        ]
+                    ],
+                    onClosing: function (instance, toast, closedBy) {
+                        console.info("Closing | closedBy: " + closedBy);
+                    },
+                    onClosed: function (instance, toast, closedBy) {
+                        console.info("Closed | closedBy: " + closedBy);
+                    }
+                }
+            }
+        }
     }),
     created() {
         this.drawer = true
@@ -273,6 +362,9 @@ export default {
 </script>
 
 <style scoped>
+.navcolor{
+    background: linear-gradient(253deg, rgba(124,143,161,1) 0%, rgba(79,94,110,1) 18%, rgba(20,36,50,1) 71%, rgba(65,184,131,1) 86%, rgba(255,45,32,1) 100%);
+}
 .graytext {
     color: gray !important;
 }

@@ -26246,8 +26246,18 @@ p, span, li{
     background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.box {
-    transition: 1.5s all cubic-bezier(0.39, 0.575, 0.565, 1);
-  }
+.titlecolor{
+    background: linear-gradient(219deg, rgba(124,143,161,1) 0%, rgba(79,94,110,1) 18%, rgba(20,36,50,1) 48%);
+}
+
+
+.Pacifico {
+    font-family: Pacifico !important;
+}
+
+.Playfair {
+    font-family: Playfair Display !important;
+    font-style: italic;
+}
 
 

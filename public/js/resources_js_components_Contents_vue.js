@@ -433,8 +433,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    //from App.vue
+    SoundEffect: {
+      type: Function
+    },
+    notificationSystem: {
+      type: Object
+    },
+    detail: {
+      type: Array
+    }
+  },
   data: function data() {
     return {
       intro: true,
@@ -453,8 +466,8 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'mdi-linkedin',
         link: 'https://www.linkedin.com/in/jimwell-punzalan-80513830b/'
       }, {
-        icon: 'mdi-gmail',
-        link: 'https://www.google.com/'
+        icon: 'mdi-github',
+        link: 'https://github.com/Jymzie'
       }],
       Education: [{
         school: 'CAVITE STATE UNIVERSITY - CCAT',
@@ -549,13 +562,6 @@ __webpack_require__.r(__webpack_exports__);
         title: 'WCMS: Pet Adopt Website',
         info: 'Pet Adopt is a website made by the students of Cavite State University - CCAT Campus that can help some animals especially the homeless one in finding their own home through people who can access the website with a single click'
       }],
-      detail: [{
-        icon: 'mdi-home',
-        text: '245 Purok 1, Tejero, Gen.Trias, Cavite, Philippines'
-      }, {
-        icon: 'mdi-phone',
-        text: '(+63) 961-122-9773'
-      }],
       reference: [{
         name: 'Aries M. Gelera',
         role: 'Director, Research and Extension',
@@ -575,10 +581,6 @@ __webpack_require__.r(__webpack_exports__);
     this.screensize = screen.width;
   },
   methods: {
-    SoundEffect: function SoundEffect(track) {
-      var sound = new Audio("soundeffect/".concat(track, ".mp3"));
-      sound.play();
-    },
     mOpenCover: function mOpenCover() {
       var _this = this;
       this.introtime = true;
@@ -654,7 +656,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.Pacifico[data-v-4ccf5385]{\r\n    font-family: Pacifico !important;\n}\n.Playfair[data-v-4ccf5385]{\r\n    font-family: Playfair Display !important;\r\n    font-style: italic;\n}\n.customradius[data-v-4ccf5385] {\r\n    border-radius: 20px;\n}\n.v-col[data-v-4ccf5385]:hover {\r\n    transition-timing-function: ease;\n}\n.fade-enter-active[data-v-4ccf5385],\r\n.fade-leave-active[data-v-4ccf5385] {\r\n    transition: opacity 0.5s ease;\n}\n.fade-enter-from[data-v-4ccf5385],\r\n.fade-leave-to[data-v-4ccf5385] {\r\n    opacity: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.iconcolor[data-v-4ccf5385] {\r\n    color: linear-gradient(219deg, rgba(124, 143, 161, 1) 0%, rgba(79, 94, 110, 1) 18%, rgba(20, 36, 50, 1) 48%);\n}\n.boxcolor[data-v-4ccf5385] {\r\n    background: linear-gradient(103deg, rgba(20, 36, 50, 1) 10%, rgba(76, 94, 110, 1) 74%, rgba(124, 143, 161, 1) 94%);\n}\n.footcolor[data-v-4ccf5385] {\r\n    background: linear-gradient(180deg, rgba(124, 143, 161, 1) 0%, rgba(79, 94, 110, 1) 18%, rgba(20, 36, 50, 1) 48%);\n}\n.customradius[data-v-4ccf5385] {\r\n    border-radius: 20px;\n}\n.v-col[data-v-4ccf5385]:hover {\r\n    transition-timing-function: ease;\n}\n.fade-enter-active[data-v-4ccf5385],\r\n.fade-leave-active[data-v-4ccf5385] {\r\n    transition: opacity 0.5s ease;\n}\n.fade-enter-from[data-v-4ccf5385],\r\n.fade-leave-to[data-v-4ccf5385] {\r\n    opacity: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -888,7 +890,8 @@ var render = function () {
                           _c(
                             "v-card-title",
                             {
-                              staticClass: "black white--text font-weight-bold",
+                              staticClass:
+                                "titlecolor white--text font-weight-bold",
                             },
                             [
                               _c(
@@ -1767,7 +1770,7 @@ var render = function () {
                                       "v-card",
                                       {
                                         staticClass:
-                                          "black pa-1 ma-2 elevation-0",
+                                          "boxcolor pa-1 ma-2 elevation-0",
                                       },
                                       [
                                         _c(
@@ -1931,7 +1934,8 @@ var render = function () {
                           _c(
                             "v-card-title",
                             {
-                              staticClass: "black white--text font-weight-bold",
+                              staticClass:
+                                "titlecolor white--text font-weight-bold",
                             },
                             [
                               _c(
@@ -2343,7 +2347,7 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("v-footer", { attrs: { color: "grey darken-4", dark: "" } }, [
+      _c("v-footer", { attrs: { color: "footcolor", dark: "" } }, [
         _c(
           "div",
           [
@@ -2391,29 +2395,22 @@ var render = function () {
                           { key: i, attrs: { cols: "6", xl: "4", lg: "6" } },
                           [
                             _c(
-                              "v-list",
-                              { attrs: { dense: "", color: "grey darken-4" } },
+                              "v-list-item",
                               [
                                 _c(
-                                  "v-list-item",
+                                  "v-list-item-content",
                                   [
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v(_vm._s(item.name)),
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("v-list-item-subtitle", [
-                                          _vm._v(_vm._s(item.role)),
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("v-list-item-subtitle", [
-                                          _vm._v(_vm._s(item.contact)),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
+                                    _c("v-list-item-title", [
+                                      _vm._v(_vm._s(item.name)),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v(_vm._s(item.role)),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v(_vm._s(item.contact)),
+                                    ]),
                                   ],
                                   1
                                 ),
@@ -2441,49 +2438,52 @@ var render = function () {
                       _vm._v("INFORMATION"),
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "v-list",
-                      {
-                        attrs: { dense: "", flat: "", color: "grey darken-4" },
-                      },
-                      _vm._l(_vm.detail, function (item, i) {
-                        return _c(
-                          "v-list-item",
-                          { key: i },
-                          [
-                            _c(
-                              "v-list-item-icon",
-                              [
-                                _c("v-icon", { staticClass: "blue--text" }, [
-                                  _vm._v(
-                                    "\r\n                                    " +
-                                      _vm._s(item.icon) +
-                                      "\r\n                                "
-                                  ),
-                                ]),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-list-item-content",
-                              [
-                                _c("v-list-item-title", [
-                                  _vm._v(
-                                    "\r\n                                    " +
-                                      _vm._s(item.text) +
-                                      "\r\n                                "
-                                  ),
-                                ]),
-                              ],
-                              1
-                            ),
+                    _vm._l(_vm.detail, function (item, i) {
+                      return _c(
+                        "v-list-item",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: item.icon != "",
+                              expression: "item.icon != ''",
+                            },
                           ],
-                          1
-                        )
-                      }),
-                      1
-                    ),
+                          key: i,
+                        },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [
+                              _c("v-icon", { staticClass: "blue--text" }, [
+                                _vm._v(
+                                  "\r\n                                    " +
+                                    _vm._s(item.icon) +
+                                    "\r\n                                "
+                                ),
+                              ]),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item-content",
+                            [
+                              _c("v-list-item-title", [
+                                _vm._v(
+                                  "\r\n                                    " +
+                                    _vm._s(item.text) +
+                                    "\r\n                                "
+                                ),
+                              ]),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      )
+                    }),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
@@ -2529,7 +2529,7 @@ var render = function () {
                       1
                     ),
                   ],
-                  1
+                  2
                 ),
               ],
               1
@@ -2537,7 +2537,13 @@ var render = function () {
             _vm._v(" "),
             _c(
               "v-row",
-              { staticClass: "mb-1 indigo darken-4 align-center" },
+              {
+                staticClass: "mb-1 indigo darken align-center",
+                staticStyle: {
+                  background:
+                    "linear-gradient(86deg, rgba(65,184,131,1) 0%, rgba(255,45,32,1) 100%)",
+                },
+              },
               [
                 _c("v-col", { attrs: { cols: "2", lg: "4", sm: "2" } }),
                 _vm._v(" "),

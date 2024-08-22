@@ -18,7 +18,7 @@
                 </v-col>
                 <v-col cols="12" lg="4" sm="12">
                     <v-card class="seethrough" id="summary">
-                        <v-card-title class="black white--text font-weight-bold">
+                        <v-card-title class="titlecolor white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2">mdi-book-open-page-variant</v-icon>
                             <h2 class="Playfair">SUMMARY</h2>
                         </v-card-title>
@@ -221,7 +221,7 @@
                 <v-col cols="12" sm="12" md="6" lg="4" xl="3" v-for="(item, i) in Portfolios" :key="i">
                     <v-hover>
                         <template v-slot:default="{ hover }">
-                            <v-card class="black pa-1 ma-2 elevation-0">
+                            <v-card class="boxcolor pa-1 ma-2 elevation-0">
                                 <v-carousel class="white" show-arrows-on-hover cycle interval="10000" hide-delimiters height="240px">
                                     <v-carousel-item v-for="(img,i) in item.img" :key="i" :src="'images/portfolio/'+img" transition="fade-transition" reverse-transition="fade-transition">
                                     </v-carousel-item>
@@ -257,7 +257,7 @@
 
                 <v-col cols="12" lg="6">
                     <v-card class="seethrough mt-5" id="skill">
-                        <v-card-title class="black white--text font-weight-bold">
+                        <v-card-title class="titlecolor white--text font-weight-bold">
                             <v-icon x-large class="blue--text mx-2 Pacifico">mdi-cogs</v-icon>
                             <h2 class="Playfair">SKILLS</h2>
                         </v-card-title>
@@ -350,7 +350,7 @@
         </v-card>
     </v-dialog>
 
-    <v-footer color="grey darken-4" dark>
+    <v-footer color="footcolor" dark>
         <div>
             <v-row class="mt-2 text-center grey--text">
                 <v-col cols="12" md="4" sm="12" class="text-left">
@@ -363,7 +363,7 @@
                     <h2 id="reference" class="white--text">REFERENCES</h2>
                     <v-row>
                         <v-col cols="6" xl="4" lg="6" v-for="(item,i) in reference" :key="i">
-                            <v-list dense color="grey darken-4">
+                            
                                 <v-list-item>
                                     <v-list-item-content>
                                         <v-list-item-title>{{item.name}}</v-list-item-title>
@@ -371,15 +371,15 @@
                                         <v-list-item-subtitle>{{item.contact}}</v-list-item-subtitle>
                                     </v-list-item-content>
                                 </v-list-item>
-                            </v-list>
+                         
                         </v-col>
                     </v-row>
                 </v-col>
                 <v-col cols="12" md="4" sm="12" class="text-left">
                     <h2 class="white--text">INFORMATION</h2>
 
-                    <v-list dense flat color="grey darken-4">
-                        <v-list-item v-for="(item,i) in detail" :key="i">
+                   
+                        <v-list-item v-for="(item,i) in detail" :key="i" v-show="item.icon != ''">
                             <v-list-item-icon>
                                 <v-icon class="blue--text">
                                     {{item.icon}}
@@ -391,7 +391,7 @@
                                 </v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
-                    </v-list>
+                   
                     <br>
                     <v-col class="text-right">
                         <v-btn v-for="icon in icons" :key="icon.icon" class="mx-4" @click="SoundEffect('select')" icon :href="icon.link" target="_blank">
@@ -403,7 +403,8 @@
 
                 </v-col>
             </v-row>
-            <v-row class="mb-1 indigo darken-4 align-center">
+            <v-row class="mb-1 indigo darken align-center"
+                style="background: linear-gradient(86deg, rgba(65,184,131,1) 0%, rgba(255,45,32,1) 100%);">
                 <v-col cols="2" lg="4" sm="2"></v-col>
                 <v-col class="text-right">
                     © {{ new Date().getFullYear() }} - <strong>Powered by: </strong>
@@ -422,6 +423,17 @@
 
 <script>
 export default {
+    props: { //from App.vue
+        SoundEffect: {
+            type: Function
+        },
+        notificationSystem: {
+            type: Object
+        },
+        detail: {
+            type: Array
+        }
+    },
     data: () => ({
         intro: true,
         introtime:false,
@@ -441,8 +453,8 @@ export default {
                 link: 'https://www.linkedin.com/in/jimwell-punzalan-80513830b/'
             },
             {
-                icon: 'mdi-gmail',
-                link: 'https://www.google.com/'
+                icon: 'mdi-github',
+                link: 'https://github.com/Jymzie'
             },
         ],
         Education: [{
@@ -557,15 +569,6 @@ export default {
                 info: 'Pet Adopt is a website made by the students of Cavite State University - CCAT Campus that can help some animals especially the homeless one in finding their own home through people who can access the website with a single click'
             }
         ],
-        detail: [{
-                icon: 'mdi-home',
-                text: '245 Purok 1, Tejero, Gen.Trias, Cavite, Philippines'
-            },
-            {
-                icon: 'mdi-phone',
-                text: '(+63) 961-122-9773'
-            }
-        ],
          reference: [{
                 name: 'Aries M. Gelera',
                 role: 'Director, Research and Extension',
@@ -586,10 +589,6 @@ export default {
         this.screensize = screen.width
     },
     methods: {
-        SoundEffect(track) {
-            let sound = new Audio(`soundeffect/${track}.mp3`)
-            sound.play()
-        },
         mOpenCover(){
             this.introtime = true
             this.SoundEffect('select')
@@ -662,12 +661,17 @@ export default {
 </script>
 
 <style scoped>
-.Pacifico{
-    font-family: Pacifico !important;
+.iconcolor {
+    color: linear-gradient(219deg, rgba(124, 143, 161, 1) 0%, rgba(79, 94, 110, 1) 18%, rgba(20, 36, 50, 1) 48%);
 }
-.Playfair{
-    font-family: Playfair Display !important;
-    font-style: italic;
+
+.boxcolor {
+    background: linear-gradient(103deg, rgba(20, 36, 50, 1) 10%, rgba(76, 94, 110, 1) 74%, rgba(124, 143, 161, 1) 94%);
+
+}
+
+.footcolor {
+    background: linear-gradient(180deg, rgba(124, 143, 161, 1) 0%, rgba(79, 94, 110, 1) 18%, rgba(20, 36, 50, 1) 48%);
 }
 .customradius {
     border-radius: 20px;

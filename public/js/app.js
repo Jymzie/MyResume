@@ -2268,7 +2268,73 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Documents',
         icon: 'mdi-file-document-multiple-outline',
         color: 'indigo'
-      }]
+      }],
+      notificationSystem: {
+        options: {
+          show: {
+            theme: "dark",
+            icon: "icon-person",
+            position: "topCenter",
+            progressBarColor: "rgb(0, 255, 184)",
+            buttons: [["<button>Ok</button>", function (instance, toast) {
+              alert("Hello world!");
+            }, true], ["<button>Close</button>", function (instance, toast) {
+              instance.hide({
+                transitionOut: "fadeOutUp",
+                onClosing: function onClosing(instance, toast, closedBy) {
+                  console.info("closedBy: " + closedBy);
+                }
+              }, toast, "buttonName");
+            }]],
+            onOpening: function onOpening(instance, toast) {
+              console.info("callback abriu!");
+            },
+            onClosing: function onClosing(instance, toast, closedBy) {
+              console.info("closedBy: " + closedBy);
+            }
+          },
+          ballon: {
+            balloon: true,
+            position: "bottomCenter"
+          },
+          info: {
+            position: "bottomLeft"
+          },
+          success: {
+            position: "bottomRight"
+          },
+          warning: {
+            position: "topLeft"
+          },
+          error: {
+            position: "topRight"
+          },
+          question: {
+            timeout: 20000,
+            close: false,
+            overlay: true,
+            toastOnce: true,
+            id: "question",
+            zindex: 999,
+            position: "center",
+            buttons: [["<button><b>YES</b></button>", function (instance, toast) {
+              instance.hide({
+                transitionOut: "fadeOut"
+              }, toast, "button");
+            }, true], ["<button>NO</button>", function (instance, toast) {
+              instance.hide({
+                transitionOut: "fadeOut"
+              }, toast, "button");
+            }]],
+            onClosing: function onClosing(instance, toast, closedBy) {
+              console.info("Closing | closedBy: " + closedBy);
+            },
+            onClosed: function onClosed(instance, toast, closedBy) {
+              console.info("Closed | closedBy: " + closedBy);
+            }
+          }
+        }
+      }
     };
   },
   created: function created() {
@@ -2598,7 +2664,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.graytext[data-v-18733f2c] {\r\n    color: gray !important;\n}\n.whitetext[data-v-18733f2c] {\r\n    color: white !important;\n}\n.v-speed-dial[data-v-18733f2c] {\r\n    position: fixed;\n}\n.fade-enter-active[data-v-18733f2c],\r\n.fade-leave-active[data-v-18733f2c] {\r\n    transition: opacity 0.5s;\n}\n.fade-enter-from[data-v-18733f2c],\r\n.fade-leave-to[data-v-18733f2c] {\r\n    opacity: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.navcolor[data-v-18733f2c]{\r\n    background: linear-gradient(253deg, rgba(124,143,161,1) 0%, rgba(79,94,110,1) 18%, rgba(20,36,50,1) 71%, rgba(65,184,131,1) 86%, rgba(255,45,32,1) 100%);\n}\n.graytext[data-v-18733f2c] {\r\n    color: gray !important;\n}\n.whitetext[data-v-18733f2c] {\r\n    color: white !important;\n}\n.v-speed-dial[data-v-18733f2c] {\r\n    position: fixed;\n}\n.fade-enter-active[data-v-18733f2c],\r\n.fade-leave-active[data-v-18733f2c] {\r\n    transition: opacity 0.5s;\n}\n.fade-enter-from[data-v-18733f2c],\r\n.fade-leave-to[data-v-18733f2c] {\r\n    opacity: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20559,13 +20625,12 @@ var render = function () {
       _c(
         "v-navigation-drawer",
         {
+          staticClass: "navcolor",
           attrs: {
             app: "",
             touchless: "",
             "mobile-breakpoint": "0",
             "mini-variant": _vm.mini,
-            src: _vm.mini == false ? "images/nav1.jpg" : "",
-            color: _vm.mini == true ? "grey darken-4" : "",
             width: "220",
           },
           model: {
@@ -20681,14 +20746,17 @@ var render = function () {
                                         "v-list-item-title",
                                         {
                                           staticClass:
-                                            "graytext font-weight-bold text-center",
+                                            "white--text font-weight-bold text-center",
                                         },
                                         [_vm._v("Jimwell C. Punzalan")]
                                       ),
                                       _vm._v(" "),
                                       _c(
                                         "v-list-item-subtitle",
-                                        { staticClass: "graytext text-center" },
+                                        {
+                                          staticClass:
+                                            "white--text text-center",
+                                        },
                                         [
                                           _vm._v(
                                             "See More...\r\n\r\n                                "
@@ -20748,52 +20816,44 @@ var render = function () {
           _vm._v(" "),
           _c("v-divider"),
           _vm._v(" "),
-          _c(
-            "v-list",
-            {
-              staticClass: "grey--text align-center grey darken-4",
-              attrs: { shaped: "", dense: "" },
-            },
-            _vm._l(_vm.items, function (item, i) {
-              return _c(
-                "v-list-item",
-                {
-                  key: i,
-                  attrs: { to: item.to },
-                  on: {
-                    click: function ($event) {
-                      return _vm.SoundEffect("select")
-                    },
+          _vm._l(_vm.items, function (item, i) {
+            return _c(
+              "v-list-item",
+              {
+                key: i,
+                attrs: { to: item.to },
+                on: {
+                  click: function ($event) {
+                    return _vm.SoundEffect("select")
                   },
                 },
-                [
-                  _c(
-                    "v-list-item-icon",
-                    [
-                      _c("v-icon", { staticClass: "white--text" }, [
-                        _vm._v(_vm._s(item.icon)),
-                      ]),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-content",
-                    [
-                      _c("v-list-item-title", { staticClass: "white--text" }, [
-                        _vm._v(_vm._s(item.text)),
-                      ]),
-                    ],
-                    1
-                  ),
-                ],
-                1
-              )
-            }),
-            1
-          ),
+              },
+              [
+                _c(
+                  "v-list-item-icon",
+                  [
+                    _c("v-icon", { staticClass: "white--text" }, [
+                      _vm._v(_vm._s(item.icon)),
+                    ]),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-list-item-content",
+                  [
+                    _c("v-list-item-title", { staticClass: "white--text" }, [
+                      _vm._v(_vm._s(item.text)),
+                    ]),
+                  ],
+                  1
+                ),
+              ],
+              1
+            )
+          }),
         ],
-        1
+        2
       ),
       _vm._v(" "),
       _c(
@@ -20814,7 +20874,7 @@ var render = function () {
                   _c(
                     "v-btn",
                     {
-                      attrs: { color: "blue darken-2", dark: "", fab: "" },
+                      attrs: { color: "titlecolor", dark: "", fab: "" },
                       on: {
                         click: function ($event) {
                           return _vm.SoundEffect("slide")
@@ -20917,7 +20977,16 @@ var render = function () {
       _vm._v(" "),
       _c(
         "v-main",
-        [_c("router-view", { attrs: { width: "device-width" } })],
+        [
+          _c("router-view", {
+            attrs: {
+              width: "device-width",
+              SoundEffect: _vm.SoundEffect,
+              notificationSystem: _vm.notificationSystem,
+              detail: _vm.detail,
+            },
+          }),
+        ],
         1
       ),
       _vm._v(" "),
