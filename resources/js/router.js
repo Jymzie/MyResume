@@ -5,7 +5,6 @@ Vue.use(VueRouter)
 
 let router = new VueRouter({
     mode: 'history',
-    base: '/Resume/',
     routes: [
         {
             path: '/Overview',
