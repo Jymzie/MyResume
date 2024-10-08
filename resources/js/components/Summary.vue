@@ -6,7 +6,7 @@
             <div>
                 <h1 class="Playfair whiteshadow">Hey there!</h1>
                 <h1 class="Playfair whiteshadow">I'm <b class="Pacifico">Jimwell C. Punzalan</b>,</h1>
-                <h1 class="Playfair whiteshadow">Devoted <b class="blue--text Pacifico">IT Specialist</b></h1>
+                <h1 class="Playfair whiteshadow">A Versatile <b class="blue--text Pacifico">IT Specialist</b></h1>
                 <br>
                 <v-btn dark v-for="icon in icons" :key="icon.icon" class="mx-4" @mouseenter="SoundEffect('slide')" @click="SoundEffect('select')" icon :href="icon.link" target="_blank">
                     <v-icon large class="blue--text text-left iconhover whiteshadow" size="24px">

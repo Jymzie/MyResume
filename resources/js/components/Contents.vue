@@ -56,7 +56,7 @@
                     <v-col cols="12" lg="8" sm="8" :class="$vuetify.breakpoint.name == 'xs' ? 'text-center' : 'text-left'">
                         <h1 class="Playfair">Hey there!</h1>
                         <h1 class="Playfair">I'm <b class="Pacifico">Jimwell C. Punzalan</b>,</h1>
-                        <h1 class="Playfair">Devoted <b class="blue--text Pacifico">IT Specialist</b></h1>
+                        <h1 class="Playfair">A Versatile <b class="blue--text Pacifico">IT Specialist</b></h1>
                     </v-col>
                 </v-row>
                 <v-row>
