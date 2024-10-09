@@ -87,17 +87,20 @@ export default {
         carousel: false,
         carouselitem: [],
         Portfolios: [{
-                img: ['NPSLogin', 'NPSmonitoring', 'NPSview', 'NPSdataflow'],
+                img: ['placeholder.webp'],
+                // img: ['NPSLogin', 'NPSmonitoring', 'NPSview', 'NPSdataflow'],
                 title: 'Nail Pitching System',
                 info: 'This system is made to keep track the proof that factory production comply the norms of nail pitching every panel made in HTI i-Cube.'
             },
             {
-                img: ['BHMLogin', 'BHMDashboard', 'BHMChecking', 'BMProcess'],
+                img: ['placeholder.webp'],
+                // img: ['BHMLogin', 'BHMDashboard', 'BHMChecking', 'BMProcess'],
                 title: 'BH Product Management System',
                 info: 'The system covers the management of balcony handrail products from receiving of data from HRD up to exporting of actual materials. It includes product allocation, process status, completeness and control of products quality and delivery.'
             },
             {
-                img: ['AMTable', 'AMTable2', 'AMDialog', 'AMKaizen', 'AMBefore', 'AMAfter'],
+                img: ['placeholder.webp'],
+                // img: ['AMTable', 'AMTable2', 'AMDialog', 'AMKaizen', 'AMBefore', 'AMAfter'],
                 title: 'Access Manager',
                 info: "Access Manager is a Kaizen System that covers the BarchartMaker and HTIShukka System's account creation and access control."
             },
