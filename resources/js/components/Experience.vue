@@ -71,7 +71,7 @@
 
                                     <v-row class="d-flex justify-center">
                                         <v-col cols="6" xl="2" lg="3" md="4" sm="6" v-for="(subitem,i) in item.items" :key="i" class="text-center">
-                                            <img :src="'images/skill/'+subitem+'.png'" height="70" width="70">
+                                            <img :src="'images/skill/'+subitem+'.webp'" height="70" width="70">
                                             <p>{{subitem}}</p>
                                         </v-col>
                                     </v-row>
@@ -83,7 +83,7 @@
                     </v-card>
                 </v-scroll-x-reverse-transition>
                 <v-scroll-x-reverse-transition mode="out-in" v-else>
-                    <v-img src="images/parallax2.jpg" v-show="screensize.width > 911" height="600" class="customradius my-5 mr-5">
+                    <v-img src="images/exp.webp" v-show="screensize.width > 911" height="600" class="customradius my-5 mr-5">
                         <v-col cols="12" class="text-right">
                             <v-icon right style="z-index:10" x-large class="text-right white--text closehover" @click="CloseDialog">mdi-close</v-icon>
                         </v-col>
@@ -108,7 +108,7 @@
 
     <v-dialog v-model="exptip" fullscreen>
 
-        <v-img src="images/parallax2.jpg" height="600" class="customradius my-5 mr-5">
+        <v-img src="images/exp.webp" height="600" class="customradius my-5 mr-5">
             <v-col cols="12" class="text-right">
                 <v-icon right style="z-index:10" x-large class="text-right white--text closehover" @click="CloseDialog">mdi-close</v-icon>
             </v-col>
@@ -152,7 +152,7 @@ export default {
         exptip: false,
         Experience: [{
                 company: 'H.R.D. SINGAPORE PTE LTD',
-                logo: 'HRD.png',
+                logo: 'HRD.webp',
                 address: 'Block 3, Cavite Economic Zone III, Gen. Trias, Cavite',
                 year: 'Nov 6, 2023 - PRESENT',
                 startdate: 'Nov 6, 2023',
@@ -167,7 +167,7 @@ export default {
             },
             {
                 company: 'INTERN - CVSU-CCAT - ElStudio',
-                logo: 'CVSU.png',
+                logo: 'CVSU.webp',
                 address: "EM's Barrio, Tejeros Convention, Gen. Trias, Cavite",
                 year: 'March 2 - May 28, 2023',
                 startdate: 'March 2, 2023',
@@ -182,7 +182,7 @@ export default {
         technicalskills: [{
                 title: 'Languages',
                 icon: 'mdi-xml',
-                items: ['HTML', 'CSS', 'Javascript', 'PHP', 'Java', 'C++']
+                items: ['HTML', 'CSS', 'Javascript', 'PHP', 'Java', 'C']
             },
             {
                 title: 'Frameworks',

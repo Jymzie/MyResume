@@ -1,9 +1,9 @@
 <template>
 <v-card style="border-radius:0px" id="summary">
 
-    <v-parallax v-intersect.quiet="onIntersect" id="summary" src="images/parallax6.jpg" height="900">
-    <v-img src="images/photpaper.png" class=" justify-center align-center" contain height="100%">
-        <v-lazy v-model="isActive.summary" :options="{
+    <v-parallax  id="summary" src="images/background.webp" height="900">
+    <v-img src="images/photoprofile.webp" class=" justify-center align-center" contain height="100%">
+        <v-lazy v-intersect.quiet="onIntersect" id="summary" v-model="isActive.summary" :options="{
           threshold: .5
         }" min-height="200" transition="scale-transition">
             <SummaryVue :summary="summary" :icons="icons" :isMobile="isMobile" :SoundEffect="SoundEffect" />
@@ -14,28 +14,28 @@
 
     <div class="titlecolor">
 
-        <v-parallax v-intersect.quiet="onIntersect" id="education" style="padding: 100px 3vw 30px 3vw" src="images/parallax1.png" height="1000">
-            <v-lazy  v-model="isActive.education"  :options="{
+        <v-parallax  id="education" style="padding: 100px 3vw 30px 3vw" src="images/parallax1.webp" height="1000">
+            <v-lazy v-intersect.quiet="onIntersect" id="education" v-model="isActive.education"  :options="{
           threshold: .5
-        }" transition="scale-transition">
+        }" :min-height="screensize.height < 1366 ? 300:100" transition="scale-transition">
 
                 <EducationVue :isMobile="isMobile" :SoundEffect="SoundEffect" :screensize="screensize" />
             </v-lazy>
         </v-parallax>
     </div>
 
-    <v-parallax v-intersect.quiet="onIntersect" id="experience" src="images/parallax6.jpg" :height="isMobile && (screensize.height >= 667 || (screensize.height >= 540 && screensize.width >= 720)) ? 1600:1100">
-        <v-lazy v-model="isActive.experience" :options="{
+    <v-parallax  id="experience" src="images/background.webp" :height="isMobile && (screensize.height >= 667 || (screensize.height >= 540 && screensize.width >= 720)) ? 1600:1100">
+        <v-lazy v-intersect.quiet="onIntersect" id="experience" v-model="isActive.experience" :options="{
           threshold: .5
-        }" transition="scale-transition">
+        }" min-height="700" transition="scale-transition">
             <ExperienceVue :isMobile="isMobile" :SoundEffect="SoundEffect" :screensize="screensize" />
         </v-lazy>
     </v-parallax>
 <div class="titlecolor">
-    <v-parallax v-intersect.quiet="onIntersect" id="portfolio" src="images/collage.png" :height="isMobile && screensize.height >= 667 ? 1800:1200">
-        <v-lazy v-model="isActive.portfolio" :options="{
+    <v-parallax  id="portfolio" src="images/collage.webp" :height="isMobile && screensize.height >= 667 ? 1800:1200">
+        <v-lazy v-intersect.quiet="onIntersect" id="portfolio" v-model="isActive.portfolio" :options="{
           threshold: .5
-        }" min-height="200" transition="scale-transition">
+        }" min-height="700" transition="scale-transition">
             <PortfolioVue :isMobile="isMobile" :SoundEffect="SoundEffect" :screensize="screensize" />
         </v-lazy>
     </v-parallax>
@@ -51,7 +51,7 @@
             <v-col cols="12" lg="6" md="8" sm="12" class="white--text">
                 <v-row>
                     <v-col cols="12" lg="4" sm="4" :class="$vuetify.breakpoint.name == 'xs' ? 'text-center' : 'text-right'">
-                        <img src="images/profile.jpg" class="rounded-circle" width="140">
+                        <img src="images/profile.webp" class="rounded-circle" width="140">
                     </v-col>
                     <v-col cols="12" lg="8" sm="8" :class="$vuetify.breakpoint.name == 'xs' ? 'text-center' : 'text-left'">
                         <h1 class="Playfair">Hey there!</h1>
@@ -168,6 +168,7 @@ export default {
             type: Boolean
         }
     },
+
     data: () => ({
         isActive: {
             summary: true,
@@ -175,7 +176,6 @@ export default {
             experience: false,
             portfolio: false
         },
-        hasWatched:false,
         intro: true,
         introtime: false,
         summary: "A Technology Enthusiast with 1+ year of experience in web development and system support. Proficient in creating responsive user interfaces, writing and testing of codes, troubleshootings, database structure planning, and implementing new features based on client's request. Proven track record of improving system performance and enhancing user satisfaction.",
@@ -241,24 +241,9 @@ export default {
         onIntersect(entries, observer, item) {         
             this.isActive[entries[0].target.id] = item
             this.$emit("currentanchor", entries)
-            if(entries[0].target.id == 'education' && !this.hasWatched)
-                this.hasWatched = true
         },
 
     },
-    watch: {
-        isActive: {
-            handler: function(newValue) {
-                if(newValue.education == true && !this.hasWatched){
-                    let entries = [{target:{id:'education'},isIntersecting:true}]
-                    this.$emit("currentanchor", entries)
-                    this.hasWatched = true
-                }
-
-            },
-            deep: true
-        }
-    }
 
 }
 </script>

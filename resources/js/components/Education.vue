@@ -19,7 +19,7 @@
                     <v-card-text class="text-center">
                         <v-list-item>
                             <v-list-item-avatar class="elevation-5" :width="80" :height="80">
-                                <v-img :src="'images/'+item.logo"></v-img>
+                                <v-img :src="'images/'+item.logo+'.webp'"></v-img>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title>{{item.school}}</v-list-item-title>
@@ -40,7 +40,7 @@
 
                     <v-list-item>
                         <v-list-item-avatar class="elevation-5" :width="overlaytext.year == item.year ? 80 : 40" :height="overlaytext.year == item.year ? 80 : 40">
-                            <v-img :src="'images/'+item.logo"></v-img>
+                            <v-img :src="'images/'+item.logo+'.webp'"></v-img>
                         </v-list-item-avatar>
                         <v-list-item-content>
                             <v-list-item-title>{{item.school}}</v-list-item-title>
@@ -56,7 +56,7 @@
     </v-col>
     <v-col cols="12" lg="6" :sm="isMobile && screensize.width >= 739 ? 6 : 12">
         <v-carousel class="white" :show-arrows="false" cycle interval="9000" hide-delimiters height="500" :class="this.$vuetify.breakpoint.name == 'lg' || this.$vuetify.breakpoint.name =='xl' ? 'customradius' : 'customradius'">
-            <v-carousel-item v-for="(img,i) in gradpic" :key="i" :src="'images/'+img">
+            <v-carousel-item v-for="(img,i) in gradpic" :key="i" :src="'images/'+img+'.webp'">
             </v-carousel-item>
 
             <v-overlay :v-model="true" absolute color="#14143C">
@@ -139,10 +139,10 @@ export default {
     data: () => ({
         overlaycount: 0,
         overlaytext: '',
-         gradpic:['gradpic.JPG','gradpic2.JPG'],
+         gradpic:['gradpic','gradpic2'],
         Education: [{
                 school: 'CAVITE STATE UNIVERSITY - CCAT',
-                logo: 'CVSU.png',
+                logo: 'CVSU',
                 address: "EM's Barrio, Tejeros Convention, Rosario, Cavite",
                 year: '2018-2023',
                 course: 'Bachelor of Science in Information Technology (BSIT)',
@@ -151,7 +151,7 @@ export default {
             },
             {
                 school: 'SAINT AUGUSTINE - SENIOR HIGH',
-                logo: 'SAS.png',
+                logo: 'SAS',
                 address: 'Daang Amaya 3, Tanza, Cavite',
                 year: '2016-2018',
                 course: 'Senior High School - STEM Strand',
@@ -159,7 +159,7 @@ export default {
             },
             {
                 school: 'SAINT AUGUSTINE SCHOOL',
-                logo: 'SAS.png',
+                logo: 'SAS',
                 address: 'St. Cruz St., Poblacion 1, Tanza, Cavite',
                 year: '2012-2016',
                 course: 'Junior High School',

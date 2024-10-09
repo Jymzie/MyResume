@@ -15,7 +15,7 @@
                 <template v-slot:default="{ hover }">
                     <v-card class="boxcolor pa-1 ma-2 elevation-0">
                         <v-carousel class="white" show-arrows-on-hover cycle interval="9000" hide-delimiters height="240px">
-                            <v-carousel-item v-for="(img,i) in item.img" :key="i" :src="'images/portfolio/'+img" >
+                            <v-carousel-item v-for="(img,i) in item.img" :key="i" :src="'images/portfolio/'+img+'.webp'" >
                             </v-carousel-item>
 
                         </v-carousel>
@@ -58,7 +58,7 @@
 
             </v-card-title>
                 <v-carousel show-arrows-on-hover height="90vh">
-                    <v-carousel-item v-for="(img,i) in carouselitem.img" :key="i" :src="'images/portfolio/'+img" contain></v-carousel-item>
+                    <v-carousel-item v-for="(img,i) in carouselitem.img" :key="i" :src="'images/portfolio/'+img+'.webp'" contain></v-carousel-item>
                 </v-carousel>
         
                 
@@ -87,30 +87,27 @@ export default {
         carousel: false,
         carouselitem: [],
         Portfolios: [{
-                img: ['placeholder.png'],
-                // ['NPSLogin.PNG', 'NPSmonitoring.png', 'NPSview.PNG', 'NPSdataflow.png'],
+                img: ['NPSLogin', 'NPSmonitoring', 'NPSview', 'NPSdataflow'],
                 title: 'Nail Pitching System',
                 info: 'This system is made to keep track the proof that factory production comply the norms of nail pitching every panel made in HTI i-Cube.'
             },
             {
-                img: ['placeholder.png'],
-                // ['BHMLogin.PNG', 'BHMDashboard.PNG', 'BHMChecking.png', 'BMProcess.png'],
+                img: ['BHMLogin', 'BHMDashboard', 'BHMChecking', 'BMProcess'],
                 title: 'BH Product Management System',
                 info: 'The system covers the management of balcony handrail products from receiving of data from HRD up to exporting of actual materials. It includes product allocation, process status, completeness and control of products quality and delivery.'
             },
             {
-                img: ['placeholder.png'],
-                // ['AMTable.PNG', 'AMTable2.PNG', 'AMDialog.png', 'AMKaizen.png', 'AMBefore.png', 'AMAfter.png'],
+                img: ['AMTable', 'AMTable2', 'AMDialog', 'AMKaizen', 'AMBefore', 'AMAfter'],
                 title: 'Access Manager',
                 info: "Access Manager is a Kaizen System that covers the BarchartMaker and HTIShukka System's account creation and access control."
             },
             {
-                img: ['ElsHome.png', 'ElsScan.png', 'ElsQR.png'],
+                img: ['ElsHome', 'ElsScan', 'ElsQR'],
                 title: 'ElStudio I.D. System',
                 info: 'The system is built in with biometric function for monitoring of attendance and inventory'
             },
             {
-                img: ['PetAdopt.png', 'PetInfo.png', 'PetHome.png'],
+                img: ['PetAdopt', 'PetInfo', 'PetHome'],
                 title: 'WCMS: Pet Adopt Website',
                 info: 'Pet Adopt is a website made by the students of Cavite State University - CCAT Campus that can help some animals especially the homeless one in finding their own home through people who can access the website with a single click'
             }
@@ -122,7 +119,6 @@ export default {
             this.carouselitem.img = item
             this.carouselitem.title = title
             this.carousel = true
-            console.log(this.$vuetify.breakpoint.name);
         },
     },
     watch: {

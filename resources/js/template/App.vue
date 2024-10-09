@@ -1,5 +1,5 @@
 <template>
-<v-app id="inspire">
+<v-app id="inspire" ref="container">
     <v-navigation-drawer app v-model="drawer" touchless
         mobile-breakpoint="0"
         :mini-variant="mini"
@@ -9,7 +9,7 @@
        <v-list v-if="mini == true">
           <v-list-item class="px-2">
             <v-list-item-avatar>
-              <v-img src="images/profile.jpg"></v-img>
+              <v-img src="images/profile.webp"></v-img>
             </v-list-item-avatar>
           </v-list-item>
 
@@ -23,7 +23,7 @@
                      <v-icon class="iconhover" @click="mini=!mini" @mouseenter="SoundEffect('slide')">mdi-magnify-minus</v-icon>
              </v-col>           
 
-            <v-img src="images/profile.jpg" width="150" class="rounded-circle elevation-10 mx-8 mt-2"></v-img>
+            <v-img src="images/profile.webp" width="150" class="rounded-circle elevation-10 mx-8 mt-2"></v-img>
             <v-tooltip right>
                 <template v-slot:activator="{on, attr}">
                     <v-list-item link v-on="on" v-bind="attr">
@@ -78,7 +78,7 @@
 
     </v-speed-dial>
 
-    <v-main>
+    <v-main >
         <router-view width="device-width" :SoundEffect="SoundEffect" :notificationSystem="notificationSystem" :detail="detail" :screensize="screensize" :isMobile="isMobile" :message="message" @currentanchor="UpdateAnchor"/>
     </v-main>
 
@@ -123,6 +123,9 @@
 </template>
 
 <script>
+
+
+
 export default {
     data: () => ({
         currentview:['SUMMARY'],
@@ -299,6 +302,7 @@ export default {
         this.detectOrientation()
     },
     mounted() {
+        // this.setLocomotiveScroll()
         this.detectOrientation()
         window.addEventListener('resize', this.detectOrientation);
     },
@@ -371,7 +375,8 @@ export default {
                 this.$toast.error(response.data, 'Error', this.notificationSystem.options.error)
             })
             
-        }
+        },
+         
     },
     computed: {
         Filled() {
