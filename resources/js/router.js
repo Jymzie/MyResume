@@ -7,16 +7,6 @@ let router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/Overview',
-            name: 'Overview',
-            component: () => import('./components/Overview'),
-        },
-        {
-            path: '/Experience',
-            name: 'Experience',
-            component: () => import('./components/Experience'),
-        },
-        {
             path: '/',
             name: 'Contents',
             component: () => import('./components/Contents'),

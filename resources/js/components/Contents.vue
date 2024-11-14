@@ -42,9 +42,6 @@
         </v-parallax>
     </div>
 
-    <!-- <v-parallax src="images/parallax3.jpg" height="1200">
-        <SkillsVue :SoundEffect="SoundEffect"/>
-    </v-parallax> -->
     <v-dialog v-model="intro" content-class="elevation-0" persistent>
         <div class="d-flex text-center">
 
@@ -141,7 +138,6 @@
 import EducationVue from './Education.vue'
 import ExperienceVue from './Experience.vue'
 import PortfolioVue from './Portfolio.vue'
-import SkillsVue from './Skills.vue'
 import SummaryVue from './Summary.vue'
 
 export default {
@@ -150,7 +146,6 @@ export default {
         EducationVue,
         ExperienceVue,
         PortfolioVue,
-        SkillsVue
     },
     props: { //from App.vue
         SoundEffect: {
