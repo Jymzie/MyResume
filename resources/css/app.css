@@ -5,7 +5,7 @@ html,body{
     overflow-x: hidden;
 }
 
-p, span{
+p, span, li{
     font-size: 17px;
 }
 
@@ -22,3 +22,34 @@ p, span{
     transition: 1.5s all cubic-bezier(0.39, 0.575, 0.565, 1);
   }
 
+  .titlecolor{
+    background: linear-gradient(219deg, rgba(124,143,161,1) 0%, rgba(79,94,110,1) 18%, rgba(20,36,50,1) 48%);
+}
+
+.text-h4{
+    font-family: Pacifico !important;
+}
+.Pacifico {
+    font-family: Pacifico !important;
+    font-size: 120%;
+}
+.titlesize{
+    font-size:250%;
+}
+.textshadow{
+    text-shadow: 1px 1px 10px black;
+}
+.whiteshadow{
+    text-shadow: 1px 1px 10px white;
+}
+
+.Playfair {
+    font-family: Playfair Display !important;
+    font-style: italic;
+}
+.closehover:hover{
+    color: red !important;
+}
+.iconhover:hover {
+    transform: scale(1.4);
+  }

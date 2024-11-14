@@ -1,102 +1,164 @@
 <template>
-    <v-container>
-        <v-card class="seethrough" id="top">
-            <v-card-title class="black white--text font-weight-bold">
-                <v-icon x-large class="blue--text mx-2">mdi-information-outline</v-icon>
-                SUMMARY
-            </v-card-title>
-            <v-card-text >
-                <p class="ma-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate hendrerit nisi, id dictum massa viverra eget. Integer venenatis iaculis velit ut pellentesque. Aenean iaculis sed eros id sodales. Vivamus egestas fermentum odio sit amet maximus. Ut lacinia enim imperdiet ante placerat, vitae ultrices elit porttitor. Donec maximus finibus nisl et facilisis. Nulla accumsan dictum ex, sed elementum nulla malesuada vitae. Cras tempor nisi a mi tempor euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque sed posuere turpis. Sed vel auctor mauris, et tempus lacus. Duis vehicula ex purus, quis sagittis dolor finibus tincidunt.</p>
-            </v-card-text>
-        </v-card>
-        
-        <v-row class="my-5">
-            <v-col cols="6">
-                <v-card class="seethrough">
-                    <v-card-title class="black white--text font-weight-bold">
-                        <v-icon x-large class="blue--text mx-2">mdi-school</v-icon>
-                        EDUCATION
-                    </v-card-title>
-                    <v-card-text >
-
-                        <v-hover v-for="(item, i) in Education" :key="i">
-                            <template v-slot:default="{ hover }">
-                                <v-card class="mt-3">
-                                    <v-card-text class="text-center">
-                                        <v-row>
-                                            <v-col cols="2">
-                                                    <v-img src="images/profile.jpg" width="75" class="rounded-circle elevation-10 mx-1"></v-img>
-                                            </v-col>
-                                            <v-col cols="10">
-                                                <h2>{{item.school}}</h2>
-                                                <v-card-subtitle>{{item.address}}</v-card-subtitle>
-                                            </v-col>
-                                        </v-row>
-                                    </v-card-text>
-
-                                        <v-expand-x-transition>
-                                            <v-overlay
-                                                v-if="hover"
-                                                absolute
-                                                opacity="1"
-                                                color="#14143C"
-                                            >
-                                                <span>{{item.year}}</span>
-                                                <br>
-                                                {{item.course}}
-                                                <br>
-                                                <span v-if="item.award != ''" class="yellow--text"><v-icon class="yellow--text">mdi-medal</v-icon>
-                                                {{item.award}}
-                                                </span>
-                                            </v-overlay>
-                                        </v-expand-x-transition>
-
-                                </v-card>
-                            </template>
-                        </v-hover>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-
-            <v-col cols="6">
-                <transition class="test2">
-                    <v-card class="seethrough">
-                        <v-card-title class="black white--text font-weight-bold">
-                            <v-icon x-large class="blue--text mx-2">mdi-certificate</v-icon>
-                            REFERENCES
-                        </v-card-title>
-                        <v-card-text >
-                            <v-row>
-                                <v-col>
-                                    Ms. Jane Doe
-                                    <v-card-subtitle>Teacher</v-card-subtitle>
-                                    096214124
-                                </v-col>
-                                <v-col>
-                                    Ms. Jane Doe
-                                    <v-card-subtitle>Teacher</v-card-subtitle>
-                                    096214124
-                                </v-col>
-                            </v-row>
-                        </v-card-text>
-                    </v-card>
-                </transition>
-               
-            </v-col>
-        </v-row>
-    </v-container>
-    
+  <div class="horizontal-grid">
+    <div class="grid-animation-reverse" :class="gridAnimation">
+      <div class="grid-animation">
+        <div class="horizontal-grid-1">
+          <div v-for="element in grid1" :key="element.id" class="elements">
+            {{ element.name }}
+          </div>
+          <div v-for="element in grid1" :key="element.id" class="elements">
+            {{ element.name }}
+          </div>
+          <div v-for="element in grid1" :key="element.id" class="elements">
+            {{ element.name }}
+          </div>
+        </div>
+        <div class="horizontal-grid-2">
+          <div v-for="element in grid2" :key="element.id" class="elements">
+            {{ element.name }}
+          </div>
+          <div v-for="element in grid2" :key="element.id" class="elements">
+            {{ element.name }}
+          </div>
+          <div v-for="element in grid2" :key="element.id" class="elements">
+            {{ element.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            Education:[{school:'CAVITE STATE UNIVERSITY - CCAT', address:'Tejeros Convention, Cavite', year:'2018-2023', course:'Bachelor of Science in Information Technology (BSIT)', award:'CUM LAUDE'},
-                {school:'SAINT AUGUSTINE - SENIOR HIGH', address:'Tanza, Cavite', year:'2016-2018', course:'Senior High School - STEM Strand', award:''},
-                {school:'SAINT AUGUSTINE SCHOOL', address:'Tanza, Cavite', year:'2012-2016', course:'Junior High School', award:'BEST IN DEPORTMENT'},
-            ]
-        }
-    }
-}
+  data() {
+    return {
+      grid1: [
+        {
+          id: 1,
+          name: "element1",
+        },
+        {
+          id: 2,
+          name: "element2",
+        },
+        {
+          id: 3,
+          name: "element3",
+        },
+        {
+          id: 4,
+          name: "element4",
+        },
+        {
+          id: 5,
+          name: "element5",
+        },
+      ],
+      grid2: [
+        {
+          id: 1,
+          name: "element1",
+        },
+        {
+          id: 2,
+          name: "element2",
+        },
+        {
+          id: 3,
+          name: "element3",
+        },
+        {
+          id: 4,
+          name: "element4",
+        },
+        {
+          id: 5,
+          name: "element5",
+        },
+      ],
+      lastScrollY: 0,
+      gridAnimation: "",
+    };
+  },
+  methods: {
+    scrollHandler() {
+      let diff = window.scrollY - this.lastScrollY;
+      //scroll up
+      if (diff < 0) {
+        this.gridAnimation = "grid-animation-reverse-running";
+      } else {
+        this.gridAnimation = "";
+      }
+      this.lastScrollY = window.scrollY;
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", this.scrollHandler);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.scrollHandler);
+  },
+};
 </script>
+
+<style scoped>
+.horizontal-grid {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 500px;
+}
+.horizontal-grid-1,
+.horizontal-grid-2 {
+  display: flex;
+}
+.horizontal-grid-1 {
+  margin-left: 160px;
+}
+.elements {
+  border: 1px solid #e2e2e2;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 32px 0 0 32px;
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate(0px);
+  }
+  100% {
+    transform: translate(-1760px);
+  }
+}
+.grid-animation {
+  animation: scroll 10s linear infinite;
+}
+@keyframes scroll-reverse {
+  0% {
+    transform: translate(-1760px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+.grid-animation-reverse {
+  animation: scroll-reverse 5s linear infinite;
+  animation-play-state: paused;
+}
+.grid-animation-reverse-running {
+  animation-play-state: running;
+}
+.grid-animation:hover,
+.grid-animation-reverse:hover {
+  animation-play-state: paused;
+}
+.elements:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2) !important;
+  transform: scale(0.97);
+}
+</style>

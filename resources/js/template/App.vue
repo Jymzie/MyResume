@@ -1,89 +1,92 @@
 <template>
 <v-app id="inspire">
-    <v-navigation-drawer app v-model="drawer" touchless
-        mobile-breakpoint="0"
-        :mini-variant="mini"
-        :src="mini==false ? 'images/nav1.jpg' : ''"
-        :color="mini == true ? 'grey darken-4' : ''" width="220">
-        <v-system-bar />
-       <v-list v-if="mini == true">
-          <v-list-item class="px-2">
-            <v-list-item-avatar>
-              <v-img src="images/profile.jpg"></v-img>
-            </v-list-item-avatar>
-          </v-list-item>
+    <v-scroll-x-transition>
+        <v-navigation-drawer v-if="this.$route.path == '/' && $vuetify.breakpoint.width > 430  && !intro" app v-model="drawer" touchless mobile-breakpoint="0" :mini-variant="mini" class="navcolor" width="220">
 
-          <v-list-item link @click="mini=!mini" v-show="screensize > 540">
-                <v-icon class="white--text">mdi-magnify-plus</v-icon>
-          </v-list-item>
-        </v-list>
-        
-        <v-list v-else><v-spacer/>
-            <v-col class="text-right mb-n4">
-                     <v-icon @click="mini=!mini">mdi-magnify-minus</v-icon>
-             </v-col>           
+            <v-list v-if="mini == true">
+                <v-list-item class="px-2">
+                    <v-list-item-avatar>
+                        <v-img src="images/profile.webp"></v-img>
+                    </v-list-item-avatar>
+                </v-list-item>
 
-            <v-img src="images/profile.jpg" width="150" class="rounded-circle elevation-10 mx-8 mt-2"></v-img>
-            <v-tooltip right>
-                <template v-slot:activator="{on, attr}">
-                    <v-list-item link v-on="on" v-bind="attr">
-                        <v-list-item-content>
-                            <v-list-item-title class="graytext font-weight-bold text-center">Jimwell C. Punzalan</v-list-item-title>
-                            <v-list-item-subtitle class="graytext text-center">See More...
+                <v-list-item link @click="mini=!mini" v-show="$vuetify.breakpoint.width >= 931">
+                    <v-icon class="white--text iconhover" @mouseenter="SoundEffect('slide')">mdi-magnify-plus</v-icon>
+                </v-list-item>
+            </v-list>
 
-                                <v-icon>mdi-menu-right</v-icon>
+            <v-list v-else>
+                <v-spacer />
+                <v-col class="text-right mb-n4">
+                    <v-icon class="iconhover" @click="mini=!mini" @mouseenter="SoundEffect('slide')">mdi-magnify-minus</v-icon>
+                </v-col>
 
-                            </v-list-item-subtitle>
-                        </v-list-item-content>
+                <v-img src="images/profile.webp" width="150" class="rounded-circle elevation-10 mx-8 mt-2"></v-img>
+                <v-tooltip right>
+                    <template v-slot:activator="{on, attr}">
+                        <v-list-item link v-on="on" v-bind="attr">
+                            <v-list-item-content>
+                                <v-list-item-title class="white--text font-weight-bold text-center">Jimwell C. Punzalan</v-list-item-title>
+                                <v-list-item-subtitle class="white--text text-center">IT Specialist </v-list-item-subtitle>
+                            </v-list-item-content>
 
-                    </v-list-item>
-                </template>
-                
-                <h5 v-for="(item,i) in detail" :key="i" :class="item.icon == '' ? 'blue--text font-italic text-center':'white--text'">
-                    <v-icon v-if="item.icon != ''" class="blue--text mr-2">{{item.icon}}</v-icon>
-                    {{item.text}}
-                </h5>
+                        </v-list-item>
+                    </template>
 
-            </v-tooltip>
-        </v-list>
+                    <h5 v-for="(item,i) in detail" :key="i" :class="item.icon == '' ? 'blue--text font-italic text-center':'white--text'">
+                        <v-icon v-if="item.icon != ''" class="blue--text mr-2">{{item.icon}}</v-icon>
+                        {{item.text}}
+                    </h5>
 
-        <v-divider/>
-        <v-list shaped dense class="grey--text align-center">
-            <v-list-item v-for="(item, i) in items" :key="i" :to="item.to">
+                </v-tooltip>
+            </v-list>
+
+            <v-divider />
+            <v-list-item :ripple="false" v-for="(item, i) in items" :key="i" :to="item.to" @click="SoundEffect('select')">
                 <v-list-item-icon>
-                    <v-icon class="white--text">{{item.icon}}</v-icon>
+                    <v-icon :class="currentview.includes(item.text) ? 'light-blue--text iconhover':'white--text iconhover'" @mouseenter="SoundEffect('slide')">{{item.icon}}</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
                     <v-list-item-title class="white--text">{{item.text}}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-        </v-list>
-    </v-navigation-drawer>
 
-    <v-speed-dial v-model="fab" top elevation-10 right direction="bottom" transition="slide-y-transition">
-        <template v-slot:activator>
-            <v-btn v-model="fab" color="blue darken-2" dark fab>
-                <v-icon v-if="fab">
-                    mdi-package-variant
-                </v-icon>
-                <v-icon v-else>
-                    mdi-package-variant-closed
-                </v-icon>
-            </v-btn>
-        </template>
-        <v-tooltip left v-for="(item,i) in speeddials" :key="i">
-            <template v-slot:activator="{on, attr}">
-                <v-btn v-on="on" v-bind="attr" fab dark @click="item.text == 'Download Resume' ? mDownload() : email=!email" small :color="item.color">
-                    <v-icon>{{item.icon}}</v-icon>
+        </v-navigation-drawer>
+    </v-scroll-x-transition>
+    <v-scale-transition>
+        <v-speed-dial v-if="this.$route.path == '/' && !intro" v-model="fab" top elevation-10 right direction="bottom" transition="slide-y-transition">
+            <template v-slot:activator>
+                <v-btn v-model="fab" color="titlecolor" @click="SoundEffect('select')" dark fab>
+                    <v-icon v-if="fab" @mouseenter="SoundEffect('slide')" class="iconhover">
+                        mdi-package-variant
+                    </v-icon>
+                    <v-icon v-else @mouseenter="SoundEffect('slide')" class="iconhover">
+                        mdi-package-variant-closed
+                    </v-icon>
                 </v-btn>
             </template>
-            <span>{{item.text}}</span>
-        </v-tooltip>
+            <v-tooltip left v-for="(item,i) in items" :key="i">
+                <template v-slot:activator="{on, attr}">
+                    <v-btn v-on="on" v-bind="attr" fab dark :to="item.to" small v-show="$vuetify.breakpoint.width <= 430">
+                        <v-icon :class="currentview.includes(item.text) ? 'light-blue--text iconhover':'white--text iconhover'">{{item.icon}}</v-icon>
+                    </v-btn>
+                </template>
+                <span>{{item.text}}</span>
+            </v-tooltip>
+            <v-tooltip left v-for="(item,i) in speeddials" :key="i">
+                <template v-slot:activator="{on, attr}">
+                    <!-- <v-btn v-on="on" v-bind="attr" fab dark @click="item.text == 'Download Resume' ? mDownload() : email=!email" small :color="item.color"> -->
+                    <v-btn v-on="on" v-bind="attr" fab dark @click="item.text == 'Download Resume' ? mDownload() : mOpenDocs()" small :color="item.color">
+                        <v-icon class="iconhover">{{item.icon}}</v-icon>
+                    </v-btn>
+                </template>
+                <span>{{item.text}}</span>
+            </v-tooltip>
 
-    </v-speed-dial>
-
-    <v-main>
-        <router-view/>
+        </v-speed-dial>
+    </v-scale-transition>
+    <v-main class="momentum">
+        <router-view width="device-width" :SoundEffect="SoundEffect" :notificationSystem="notificationSystem" :detail="detail" :message="message" :intro="intro" @currentanchor="UpdateAnchor" @triggerintro="intro = false" />
     </v-main>
 
     <v-dialog v-model="email" width="50%" persistent>
@@ -129,13 +132,16 @@
 <script>
 export default {
     data: () => ({
-        screensize:'',
+        currentview: [],
         fab: false,
         email: false,
-        message: {},
-        file: 'Resume - Punzalan, Jimwell C.pdf',
+        message: {
+            title: 'HEllo'
+        },
+        file: 'Resume - Punzalan, Jimwell C.jpg',
         drawer: true,
-        mini:true,
+        mini: true,
+        intro: true,
         items: [{
                 text: 'SUMMARY',
                 icon: 'mdi-book-open-page-variant',
@@ -161,27 +167,20 @@ export default {
                 }
             },
             {
-                text: 'PORTFOLIOS',
+                text: 'PORTFOLIO',
                 icon: 'mdi-folder',
                 to: {
                     name: 'Contents',
-                    hash: '#portfolios'
+                    hash: '#portfolio'
                 }
             },
-            {
-                text: 'TECHNICAL SKILLS',
-                icon: 'mdi-cogs',
-                to: {
-                    name: 'Contents',
-                    hash: '#tskill'
-                }
-            },
+
             {
                 text: 'REFERENCES',
                 icon: 'mdi-card-account-phone',
                 to: {
                     name: 'Contents',
-                    hash: '#reference'
+                    hash: '#references'
                 }
             }
         ],
@@ -195,7 +194,7 @@ export default {
             },
             {
                 icon: 'mdi-phone',
-                text: '(+63) 961-122-9773'
+                text: '(+63) 976-453-8964'
             },
             {
                 icon: '',
@@ -208,8 +207,8 @@ export default {
                 color: 'green'
             },
             {
-                text: 'Send e-mail',
-                icon: 'mdi-email',
+                text: 'Documents',
+                icon: 'mdi-file-document-multiple-outline',
                 color: 'indigo'
             }
         ],
@@ -305,36 +304,84 @@ export default {
     }),
     created() {
         this.drawer = true
-        this.screensize = screen.width
+        this.detectOrientation()
+
     },
+    // mounted() {
+    //     this.detectOrientation()
+    //     window.addEventListener('resize', this.detectOrientation);
+    // },
+    // beforeUnmount() {
+    //     window.removeEventListener('resize', this.detectOrientation);
+    // },
     methods: {
+        UpdateAnchor(data) {
+            if (data[0].isIntersecting)
+                this.currentview.push(data[0].target.id.toUpperCase())
+            else {
+                let index = this.currentview.indexOf(data[0].target.id.toUpperCase())
+                if (index != -1)
+                    this.currentview.splice(index, 1)
+            }
+        },
+        detectOrientation() {
+            // if (/Android|Mac|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            //     this.isMobile = true
+            // } else {
+            //     this.isMobile = false
+            // }'
+        },
+        SoundEffect(track) {
+            let sound = new Audio(`soundeffect/${track}.mp3`)
+            sound.play()
+        },
+        // mDownload() {
+        //     this.SoundEffect('select')
+        //     axios.get(`api/Download/create?path=${this.file}`, {
+        //             responseType: 'blob'
+        //         })
+        //         .then(res => {
+        //             const url = window.URL.createObjectURL(new Blob([res.data]))
+        //             const link = document.createElement("a");
+        //             link.href = url
+        //             link.setAttribute("download", this.file)
+        //             document.body.appendChild(link)
+        //             link.click();
+        //             link.remove();
+        //             this.$toast.success('Download Successfully!', 'OK', this.notificationSystem.options.success)
+
+        //         })
+        //         .finally(res =>{
+        //             this.SoundEffect('success')
+        //         })
+        // },
         mDownload() {
-            // axios.get(`api/Download/create?path=${this.file}`, {
-            //         responseType: 'blob'
-            //     })
-            //     .then(res => {
-            //         const url = window.URL.createObjectURL(new Blob([res.data]))
-            //         const link = document.createElement("a");
-            //         link.href = url
-            //         link.setAttribute("download", this.file)
-            //         document.body.appendChild(link)
-            //         link.click();
-            //         link.remove();
-            //         this.$toast.success('Download Successfully!', 'OK', this.notificationSystem.options.success)
-            //     })
-             window.open('https://drive.google.com/uc?export=download&id=1ECbvv66sDgqQ0B-gz3mIRok_4d0BFNJq', '_blank');
+            this.SoundEffect('select')
+            window.open('https://drive.google.com/uc?export=download&id=1ECbvv66sDgqQ0B-gz3mIRok_4d0BFNJq', '_blank');
+
+            setTimeout(() => {
+                this.$toast.success('Download Successfully!', 'OK', this.$store.state.notificationSystem.options.success)
+                this.SoundEffect('success')
+            }, 500)
+        },
+        mOpenDocs() {
+            this.SoundEffect('select')
+            window.open('https://drive.google.com/drive/folders/1YqL7a7piEq4LjH0-X6ifiwhuKQFNiu0f?usp=drive_link', '_blank');
         },
         mSend() {
             console.log(this.message)
-            axios.post('api/Download',this.message)
-            .then(res => {
-                this.email = false
-                this.$toast.success('E-mail Sent!', 'OK', this.notificationSystem.options.success)
-            }).catch(({response}) => {
-                this.$toast.error(response.data, 'Error', this.notificationSystem.options.error)
-            })
-            
-        }
+            axios.post('api/Download', this.message)
+                .then(res => {
+                    this.email = false
+                    this.$toast.success('E-mail Sent!', 'OK', this.notificationSystem.options.success)
+                }).catch(({
+                    response
+                }) => {
+                    this.$toast.error(response.data, 'Error', this.notificationSystem.options.error)
+                })
+
+        },
+
     },
     computed: {
         Filled() {
@@ -346,11 +393,23 @@ export default {
             else
                 return false
         }
+    },
+    watch: {
+        mini(val) {
+            if (val == false)
+                this.SoundEffect('select')
+            else
+                this.SoundEffect('close')
+        }
     }
 }
 </script>
 
 <style scoped>
+.navcolor {
+    background: linear-gradient(253deg, rgba(124, 143, 161, 1) 0%, rgba(79, 94, 110, 1) 18%, rgba(20, 36, 50, 1) 71%, blue 86%, rgba(20, 36, 50, 1) 100%);
+}
+
 .graytext {
     color: gray !important;
 }
